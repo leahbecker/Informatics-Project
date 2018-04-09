@@ -1,30 +1,36 @@
 --account
+DROP TABLE IF EXISTS account;
+
 CREATE TABLE account (
-    accountID INT NOT NULL AUTO_INCREMENT,
+    accountID INT  AUTO_INCREMENT NOT NULL,
     hawkID VARCHAR(50) NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     administrator BOOLEAN NOT NULL DEFAULT False,
-    PRIMARY KEY (hawkID),
+    PRIMARY KEY (accountID)
 );
 --INSERT INTO account (accountID, hawkID, firstName, lastName, administrator) VALUES ('', '', '', '', '');
 
 
 -- This a table to hold information about the type of user someone is and holds basic information about them
+DROP TABLE IF EXISTS userRole;
+
 CREATE TABLE userRole (
-  roleID INT NOT NULL AUTO_INCREMENT,
+  roleID INT  AUTO_INCREMENT NOT NULL,
   hawkID VARCHAR(50) NOT NULL,
   courseID INT NOT NULL AUTO_INCREMENT,
   theirRole VARCHAR(255) NOT NULL,
   credits INT NULL,
   PRIMARY KEY (roleID),
-  FOREIGN KEY (hawkID) REFERENCES account(hawkID),
+  FOREIGN KEY (hawkID) REFERENCES account(hawkID)
 );
 
 --INSERT INTO userRole (roleID, hawkID, courseID, theirRole, credits) VALUES ('', '', '', '', '');
 
 
 --course
+DROP TABLE IF EXISTS course;
+
 CREATE TABLE course (
     courseID INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
@@ -36,6 +42,7 @@ CREATE TABLE course (
 
 --INSERT INTO course (courseID, title, uniCourseNum, sessionSeason) VALUES ('', '', '', '');
 
+DROP TABLE IF EXISTS practiceProb;
 
 CREATE TABLE practiceProb (
     probID INT NOT NULL AUTO_INCREMENT,
@@ -50,6 +57,8 @@ CREATE TABLE practiceProb (
 
 
 -- This a table to hold information about a tutor's availability
+DROP TABLE IF EXISTS tutorSched;
+
 CREATE TABLE tutorSched (
   tutorID INT NOT NULL AUTO_INCREMENT,
   hawkID VARCHAR(50) NOT NULL,
@@ -62,6 +71,7 @@ CREATE TABLE tutorSched (
 );
 --INSERT INTO tutorSched (tutorID, hawkID, courseID, startTime, numSlots, weekday) VALUES ('', '', '', '', '', '');
 
+DROP TABLE IF EXISTS tutorApp;
 
 CREATE TABLE tutorApp (
     appID INT NOT NULL AUTO_INCREMENT,
@@ -73,6 +83,7 @@ CREATE TABLE tutorApp (
 );
 --INSERT INTO tutorApp (appID, hawkID, email, phone) VALUES ('', '', '', '');
 
+DROP TABLE IF EXISTS scheduleAvail;
 
 CREATE TABLE scheduleAvail (
     availID INT NOT NULL AUTO_INCREMENT,
@@ -86,6 +97,8 @@ CREATE TABLE scheduleAvail (
 --INSERT INTO scheduleAvail (availID, hawkID, weekday, startTime, numOfSlots) VALUES ('', '', '', '', '');
 
 -- This a table to hold information about a course that has been taken by a potential tutor
+DROP TABLE IF EXISTS courseTaken;
+
 CREATE TABLE courseTaken (
   courseID INT NOT NULL AUTO_INCREMENT,
   hawkID VARCHAR(50) NOT NULL,
@@ -96,6 +109,7 @@ CREATE TABLE courseTaken (
 );
 --INSERT INTO courseTaken (courseID, hawkID, title, grade) VALUES ('', '', '', '');
 
+DROP TABLE IF EXISTS tutorSlot;
 
 CREATE TABLE tutorSlot (
     slotID INT NOT NULL AUTO_INCREMENT,
