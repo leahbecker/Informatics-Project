@@ -8,3 +8,14 @@ CREATE TABLE account (
     hashedpass VARCHAR(255) NOT NULL,
     PRIMARY KEY (hawkID)
 );
+
+
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('johnsmith', 'John', 'Smith', True, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('leahbecker', 'Leah', 'Becker', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('jamescharles', 'James', 'Charles', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('kennyenokian', 'Kenny', 'Enokian', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('lilyjohnson', 'Lily', 'Johnson', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('tedmoseby', 'Ted', 'Moseby', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', False, 'abc');
+INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('shelbyjoe', 'Shelby', 'Joe', False, 'abc');
