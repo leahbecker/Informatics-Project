@@ -37,8 +37,8 @@ INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('jamesch
 INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('kennyenokian', '1110', 'Faculty', '20');
 INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('lilyjohnson', '1210', 'Faculty', '20');
 INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('tedmoseby', '1020', 'Student', '3');
-INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('rachelbartlett', '1020', 'Student', '3');
-INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('shelbyjoe', '1020', 'Student', '3');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('rachelbartlett', '1110', 'Student', '3');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('shelbyjoe', '1210', 'Student', '3');
 
 for course....
 
