@@ -19,3 +19,23 @@ INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VAL
 INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', False, 'abc');
 INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', False, 'abc');
 INSERT INTO account (hawkID, firstName, lastName, administrator, hashedpass) VALUES ('shelbyjoe', 'Shelby', 'Joe', False, 'abc');
+
+
+CREATE TABLE userRole (
+  roleID INT UNSIGNED AUTO_INCREMENT NOT NULL,
+  hawkID VARCHAR(50) NOT NULL,
+  uniCourseNum INT(50) NOT NULL,
+  theirRole VARCHAR(255) NOT NULL,
+  credits INT NULL,
+  PRIMARY KEY (roleID),
+  FOREIGN KEY (hawkID) REFERENCES account(hawkID)
+);
+
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('johnsmith', '1020, 1110, 1210', 'Tutor', '20');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('leahbecker', '1020, 1110', 'Tutor', '20');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('jamescharles', '1020', 'Faculty', '20');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('kennyenokian', '1110', 'Faculty', '20');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('lilyjohnson', '1210', 'Faculty', '20');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('tedmoseby', '1020', 'Student', '3');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('rachelbartlett', '1020', 'Student', '3');
+INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('shelbyjoe', '1020', 'Student', '3');
