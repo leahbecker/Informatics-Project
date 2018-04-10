@@ -4,7 +4,7 @@
     
     // get data from form
     $data = json_decode(file_get_contents('php://input'), true);
-    $hawkID= $data["hawkID"];
+    $username= $data['hawkID'];
 	$password = $data['password'];
     
    // connect to the database
@@ -15,29 +15,26 @@
     $errorMessage = "";
     
     // check if username meets criteria
-    if (!isset($hawkID) || (strlen($hawkID) < 2)) {
+    if (!isset($username) || (strlen($username) < 2)) {
         $isComplete = false;
         $errorMessage .= "Please enter a username with at least two characters. ";
     } else {
-        $hawkID = makeStringSafe($db, $hawkID);
+        $username = makeStringSafe($db, $username);
     }
     
-    if (!isset($password) || (strlen($password) < 2)) {
+    if (!isset($password) || (strlen($password) < 6)) {
         $isComplete = false;
-        $errorMessage .= "Please enter a password with at least six characters. ";
+        $errorMessage .= "Please enter a password with at least 6 characters. ";
     }      
 	
-    if ($isComplete) {   
-    
-        // get the hashed password from the user with the email that got entered
-        $query = "SELECT hawkID, hashedpass FROM account WHERE hawkID ='$hawkID';";
-        //$query = "SELECT hashedpass FROM account WHERE hawkID='$hawkID';";
-
+    if ($isComplete) {
+        $query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
         $result = queryDB($query, $db);
+        
         
         if (nTuples($result) == 0) {
             // no such username
-            $errorMessage .= " Username $hawkID does not correspond to any account in the system. ";
+            $errorMessage .= " Username $username does not correspond to any account in the system. ";
             $isComplete = false;
         }
     }
@@ -47,15 +44,18 @@
 		// get the hashed password for that account
 		$row = nextTuple($result);
 		$hashedpass = $row['hashedpass'];
-		$hawkID = $row['hawkID'];
+		$username = $row['hawkID'];
 		
 		// compare entered password to the password on the database
         // $hashedpass is the version of hashed password stored in the database for $username
         // $hashedpass includes the salt, and php's crypt function knows how to extract the salt from $hashedpass
         // $password is the text password the user entered in login.html
-		if ($hashedpass != crypt($password, $hashedpass)) {
+		//if ($hashedpass != crypt($password, $hashedpass)) {
+        if($hashedpass != $password){
             // if password is incorrect
+            
             $errorMessage .= " The password you enterered is incorrect. ";
+            
             $isComplete = false;
         }
     }
@@ -66,7 +66,7 @@
         // start a session
         // if the session variable 'username' is set, then we assume that the user is logged in
         session_start();
-        $_SESSION['hawkID'] = $hawkID;
+        $_SESSION['hawkID'] = $username;
 		//$_SESSION['accountid'] = $id;
         
         // send response back
