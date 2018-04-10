@@ -39,3 +39,9 @@ INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('lilyjoh
 INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('tedmoseby', '1020', 'Student', '3');
 INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('rachelbartlett', '1020', 'Student', '3');
 INSERT INTO userRole (hawkID, uniCourseNum, theirRole, credits) VALUES ('shelbyjoe', '1020', 'Student', '3');
+
+for course....
+
+INSERT INTO course (title, uniCourseNum, sessionSeason) VALUES ('Principles of Computing', '1020', 'Fall');
+INSERT INTO course (title, uniCourseNum, sessionSeason) VALUES ('Intro to Computer Science', '1110', 'Fall');
+INSERT INTO course (title, uniCourseNum, sessionSeason) VALUES ('Computer Science I: Fundamentals', '1210', 'Spring');
