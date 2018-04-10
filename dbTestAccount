@@ -59,4 +59,15 @@ INSERT INTO tutorSched (hawkID, startTime, numSlots, weekday) VALUES ('johnsmith
 INSERT INTO tutorSched (hawkID, startTime, numSlots, weekday) VALUES ('leahbecker', '1:00', '5', 'Monday, Wednesday, Friday');
 INSERT INTO tutorSched (hawkID, startTime, numSlots, weekday) VALUES ('leahbecker', '5:00', '2', 'Tuesday, Thursday');
 
+for coursetaken..
+
+INSERT INTO courseTaken (hawkID, title, grade) VALUES ('', 'Principles of Computing, Intro to Computer Science, Computer Science I: Fundamentals', 'A, A, A-');
+INSERT INTO courseTaken (hawkID, title, grade) VALUES ('', 'Principles of Computing, Intro to Computer Science', 'A-, A-');
+INSERT INTO courseTaken (hawkID, title, grade) VALUES ('', 'Principles of Computing, Intro to Computer Science, Computer Science I: Fundamentals', 'A, B+ A');
+
+for tutorslot..
+
+INSERT INTO tutorSlot (hawkID, course, datetime, student, canceledByTutor, canceledByStudent) VALUES ('tedmoseby', 'Principles of Computing', 'datetime', True, False, False);
+INSERT INTO tutorSlot (hawkID, course, datetime, student, canceledByTutor, canceledByStudent) VALUES ('shelbyjoe', 'Computer Science I: Fundamentals', 'datetime', True, False, False);
+INSERT INTO tutorSlot (hawkID, course, datetime, student, canceledByTutor, canceledByStudent) VALUES ('rachelbartlett', 'Intro to Computer Science', 'datetime', True, False, False);
 
