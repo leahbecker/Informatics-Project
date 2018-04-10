@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS account;
+
+CREATE TABLE account (
+    hawkID VARCHAR(50) NOT NULL,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    administrator BOOLEAN NOT NULL DEFAULT False,
+    PRIMARY KEY (hawkID)
+);
