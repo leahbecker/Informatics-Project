@@ -26,14 +26,12 @@ DROP TABLE IF EXISTS userRole;
 CREATE TABLE userRole (
   roleID INT UNSIGNED AUTO_INCREMENT NOT NULL,
   hawkID VARCHAR(50) NOT NULL,
-  uniCourseNum INT(50) NOT NULL,
+  administrator BOOLEAN NOT NULL DEFAULT False,
   theirRole VARCHAR(255) NOT NULL,
-  credits INT NULL,
   PRIMARY KEY (roleID),
-  FOREIGN KEY (hawkID) REFERENCES account(hawkID)
-);
+  CONSTRAINT FK_rolehawk FOREIGN KEY (hawkID) REFERENCES account(hawkID)
 
---INSERT INTO userRole (roleID, hawkID, courseID, theirRole, credits) VALUES ('', '', '', '', '');
+);
 
 
 --course
