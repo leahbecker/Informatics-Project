@@ -2,14 +2,22 @@
 DROP TABLE IF EXISTS account;
 
 CREATE TABLE account (
-    accountID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     hawkID VARCHAR(50) NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
-    administrator BOOLEAN NOT NULL DEFAULT False,
-    PRIMARY KEY (accountID)
+    hashedpass VARCHAR(255) NOT NULL,
+    PRIMARY KEY (hawkID)
 );
---INSERT INTO account (accountID, hawkID, firstName, lastName, administrator) VALUES ('', '', '', '', '');
+
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('johnsmith', 'John', 'Smith', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('leahbecker', 'Leah', 'Becker', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('jamescharles', 'James', 'Charles', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('kennyenokian', 'Kenny', 'Enokian', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('lilyjohnson', 'Lily', 'Johnson', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('tedmoseby', 'Ted', 'Moseby', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc');
 
 
 -- This a table to hold information about the type of user someone is and holds basic information about them
