@@ -28,7 +28,8 @@
     }      
 	
     if ($isComplete) {
-        $query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
+        //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
+        $query = "SELECT hawkID, hashedpass FROM account WHERE hawkID = '$username';";
         $result = queryDB($query, $db);
         
         
