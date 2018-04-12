@@ -50,6 +50,7 @@
         // $hashedpass is the version of hashed password stored in the database for $username
         // $hashedpass includes the salt, and php's crypt function knows how to extract the salt from $hashedpass
         // $password is the text password the user entered in login.html
+        
 		//if ($hashedpass != crypt($password, $hashedpass)) {
         if($hashedpass != $password){
             // if password is incorrect
