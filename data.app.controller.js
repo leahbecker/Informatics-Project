@@ -56,8 +56,7 @@
                         alert('error: ' + response.data.message);
                     } else {
                         // successful
-                        // send user back to home page
-                        $window.location.href = "index.html";
+                        $window.location.href = "login.html";
                     }
                } else {
                     alert('unexpected error');
