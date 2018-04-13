@@ -2,10 +2,11 @@ DROP TABLE IF EXISTS problem;
 DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS takesCourse;
 DROP TABLE IF EXISTS tutors;
-DROP TABLE IF EXISTS administrator;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS courseName;
 DROP TABLE IF EXISTS admins;
+DROP TABLE IF EXISTS courseTaken;
+DROP TABLE IF EXISTS tutorApp;
 DROP TABLE IF EXISTS account;
 
 
@@ -26,6 +27,24 @@ INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('tedmoseby
 INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc');
+
+CREATE TABLE tutorApp (
+  FK_hawkID VARCHAR(50) NOT NULL,
+  email VARCHAR(60) NOT NULL,
+  phone VARCHAR(12) NOT NULL,
+  FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID),
+  PRIMARY KEY (FK_hawkID)
+);
+
+CREATE TABLE courseTaken (
+  courseTakenID INT UNSIGNED AUTO_INCREMENT NOT NULL,
+  FFK_hawkID VARCHAR(50) NOT NULL,
+  courseNum INT NOT NULL,
+  courseName VARCHAR(50) NOT NULL,
+  PRIMARY KEY (courseTakenID),
+  FOREIGN KEY (FFK_hawkID) REFERENCES tutorApp(FK_hawkID)
+  
+);
 
 CREATE TABLE admins (
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
