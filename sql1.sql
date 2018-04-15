@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS tutorSlot;
 DROP TABLE IF EXISTS problem;
 DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS takesCourse;
@@ -115,4 +116,16 @@ CREATE TABLE problem (
   FK_courseID INT UNSIGNED NOT NULL,
   PRIMARY KEY (problemID),
   FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
+);
+
+CREATE TABLE tutorSlot (
+  slotID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  FK_hawkID VARCHAR(20) NOT NULL,
+  course VARCHAR(20) NOT NULL,
+  datetime DATETIME NOT NULL,
+  student BOOLEAN,
+  canceledByTutor BOOLEAN,
+  canceledByStudent BOOLEAN,
+  PRIMARY KEY (slotID),
+  FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID)
 );
