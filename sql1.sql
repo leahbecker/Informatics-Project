@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS tutorSlot;
 DROP TABLE IF EXISTS problem;
 DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS takesCourse;
@@ -16,18 +15,19 @@ CREATE TABLE account (
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50) NOT NULL,
     hashedpass VARCHAR(255) NOT NULL,
+    userRole VARCHAR(20),
     PRIMARY KEY (hawkID)
 );
 
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('johnsmith', 'John', 'Smith', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('leahbecker', 'Leah', 'Becker', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('jamescharles', 'James', 'Charles', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('kennyenokian', 'Kenny', 'Enokian', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('lilyjohnson', 'Lily', 'Johnson', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('tedmoseby', 'Ted', 'Moseby', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('johnsmith', 'John', 'Smith', 'abcabc','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('leahbecker', 'Leah', 'Becker', 'abcabc','tutor');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('jamescharles', 'James', 'Charles', 'abcabc','faculty');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('kennyenokian', 'Kenny', 'Enokian', 'abcabc','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('lilyjohnson', 'Lily', 'Johnson', 'abcabc','tutor');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('tedmoseby', 'Ted', 'Moseby', 'abcabc','faculty');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc','tutor');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc','faculty');
 
 CREATE TABLE tutorApp (
   FK_hawkID VARCHAR(50) NOT NULL,
@@ -116,16 +116,4 @@ CREATE TABLE problem (
   FK_courseID INT UNSIGNED NOT NULL,
   PRIMARY KEY (problemID),
   FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
-);
-
-CREATE TABLE tutorSlot (
-  slotID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  FK_hawkID VARCHAR(20) NOT NULL,
-  course VARCHAR(20) NOT NULL,
-  datetime DATETIME NOT NULL,
-  student BOOLEAN,
-  canceledByTutor BOOLEAN,
-  canceledByStudent BOOLEAN,
-  PRIMARY KEY (slotID),
-  FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID)
 );
