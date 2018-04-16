@@ -29,7 +29,7 @@
 	
     if ($isComplete) {
         //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
-        $query = "SELECT hawkID, hashedpass FROM account WHERE hawkID = '$username';";
+        $query = "SELECT hawkID, hashedpass,userRole FROM account WHERE hawkID = '$username';";
         $result = queryDB($query, $db);
         
         
@@ -46,6 +46,7 @@
 		$row = nextTuple($result);
 		$hashedpass = $row['hashedpass'];
 		$username = $row['hawkID'];
+        $role = $row['userRole'];
 		
 		// compare entered password to the password on the database
         // $hashedpass is the version of hashed password stored in the database for $username
@@ -64,7 +65,6 @@
          
     if ($isComplete) {   
         // password was entered correctly
-        
         // start a session
         // if the session variable 'username' is set, then we assume that the user is logged in
         session_start();
@@ -75,6 +75,7 @@
         $response = array();
         $response['status'] = 'success';
 		$response['message'] = 'logged in';
+        $response['role'] = $role;
         header('Content-Type: application/json');
         echo(json_encode($response));
     } else {

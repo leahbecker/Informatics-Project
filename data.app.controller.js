@@ -36,10 +36,21 @@
                if (response.status == 200) {
                     if (response.data.status == 'error') {
                         alert('error: ' + response.data.message);
-                    } else {
+                    }
+                    if(response.data.role == 'student'){
+                        alert('student');
+                        $window.location.href = "index.html";
+                    }
+                    if(response.data.role == 'tutor'){
+                        alert('tutor');
+                    }
+                    if(response.data.role == 'faculty'){
+                        alert('faculty');
+                    }
+                    else {
                         // successful
                         // send user back to home page
-                        $window.location.href = "index.html";
+                        $window.location.href = "login.html";
                     }
                } else {
                     alert('unexpected error');
