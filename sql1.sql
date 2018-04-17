@@ -19,15 +19,15 @@ CREATE TABLE account (
     userRole VARCHAR(20),
     PRIMARY KEY (hawkID)
 );
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('johnsmith', 'John', 'Smith', 'abcabc','student');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('leahbecker', 'Leah', 'Becker', 'abcabc','tutor');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('jamescharles', 'James', 'Charles', 'abcabc','faculty');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('kennyenokian', 'Kenny', 'Enokian', 'abcabc','student');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('lilyjohnson', 'Lily', 'Johnson', 'abcabc','tutor');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('tedmoseby', 'Ted', 'Moseby', 'abcabc','faculty');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc','student');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc','tutor');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass,userRole) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc','faculty');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('johnsmith', 'John', 'Smith', 'abcabc','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('leahbecker', 'Leah', 'Becker', 'abcabc','tutor');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('jamescharles', 'James', 'Charles', 'abcabc','faculty');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('kennyenokian', 'Kenny', 'Enokian', 'abcabc','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('lilyjohnson', 'Lily', 'Johnson', 'abcabc','tutor');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('tedmoseby', 'Ted', 'Moseby', 'abcabc','faculty');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc','faculty');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc','tutor');
 
 CREATE TABLE tutorApp (
   FK_hawkID VARCHAR(50) NOT NULL,
