@@ -30,7 +30,9 @@
     if ($isComplete) {
         //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
         $query = "SELECT hawkID, hashedpass,userRole FROM account WHERE hawkID = '$username';";
+        $query2 = "SELECT isAdmin FROM admins WHERE FK_hawkID = '$username';";
         $result = queryDB($query, $db);
+        $result2 = queryDB($query2, $db);
         
         
         if (nTuples($result) == 0) {
@@ -38,6 +40,7 @@
             $errorMessage .= " Username $username does not correspond to any account in the system. ";
             $isComplete = false;
         }
+
     }
     
     if ($isComplete) {            
@@ -48,6 +51,12 @@
 		$username = $row['hawkID'];
         $role = $row['userRole'];
 		
+        //$row2 = nextTuple($result2);
+        //$admin = $row2;
+        //$admin = '1';
+        $row2 = nextTuple($result2);
+        $admin = $row2['isAdmin'];
+        
 		// compare entered password to the password on the database
         // $hashedpass is the version of hashed password stored in the database for $username
         // $hashedpass includes the salt, and php's crypt function knows how to extract the salt from $hashedpass
@@ -76,6 +85,7 @@
         $response['status'] = 'success';
 		$response['message'] = 'logged in';
         $response['role'] = $role;
+        $response['admin'] = $admin;
         header('Content-Type: application/json');
         echo(json_encode($response));
     } else {

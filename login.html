@@ -59,7 +59,9 @@
                 <div ng-show="accountForm.password.$invalid && accountForm.password.$touched" >Please enter your hawkID password</div>
             </div>
             <div class = "text-center">
-                <button class="btn btn-default" ng-click="login(account)" ng-disabled="accountForm.$invalid">Log in</button>
+                <button class = "btn btn-dark btn-sm" ng-click="adminlogin(account)" ng-disabled="accountForm.$invalid">admin login</button>
+                <button class="btn btn-warning btn-lg" ng-click="login(account)" ng-disabled="accountForm.$invalid">Log in</button>
+                
             </div>
         </form>
     </div>
