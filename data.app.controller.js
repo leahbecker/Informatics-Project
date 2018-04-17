@@ -37,20 +37,23 @@
                     if (response.data.status == 'error') {
                         alert('error: ' + response.data.message);
                     }
-                    if(response.data.role == 'student'){
+                    else if(response.data.role == 'student'){
                         alert('student');
                         $window.location.href = "index.html";
                     }
-                    if(response.data.role == 'tutor'){
+                    else if(response.data.role == 'tutor'){
                         alert('tutor');
+                        $window.location.href = "tutorhome.html";
                     }
-                    if(response.data.role == 'faculty'){
+                    else if(response.data.role == 'faculty'){
                         alert('faculty');
+                        $window.location.href = "facultyhome.html";
                     }
                     else {
                         // successful
                         // send user back to home page
-                        $window.location.href = "login.html";
+                        alert('no role');
+                        //$window.location.href = "facultyhome.html";
                     }
                } else {
                     alert('unexpected error');
