@@ -38,15 +38,15 @@
                         alert('error: ' + response.data.message);
                     }
                     else if(response.data.role == 'student'){
-                        alert('student');
+                        //alert('student');
                         $window.location.href = "index.html";
                     }
                     else if(response.data.role == 'tutor'){
-                        alert('tutor');
+                        //alert('tutor');
                         $window.location.href = "tutorhome.html";
                     }
                     else if(response.data.role == 'faculty'){
-                        alert('faculty');
+                        //alert('faculty');
                         $window.location.href = "facultyhome.html";
                     }
                     else {
@@ -73,10 +73,10 @@
                     else if(response.data.admin == '1') {
                         // successful
                         // send user back to home page
-                        alert('admin!');
+                        //alert('admin!');
                         $window.location.href = "adminhome.html";
                     }
-                    else{alert(response.data.admin);}
+                    else{alert('You are not an admin');}
                } else {
                     alert('unexpected error');
                }

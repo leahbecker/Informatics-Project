@@ -19,7 +19,7 @@
     <script src="data.app.controller.js"></script>
     <script src="app.filter.js"></script>
     <style>
-       
+       body {background-image: url("bg1.jpg");}
     </style>
 </head>
 
@@ -30,7 +30,7 @@
 
 <!-- header -->
 <div class="row align-items-center justify-content-center">
-    <div class="pt-5 col-xs-12">
+    <div class="text-warning pt-5 col-xs-12">
         <h2>Log in</h2>
     </div>    
 </div>
@@ -44,7 +44,7 @@
             <!-- username for account -->
             <div class="form-group" ng-class="{ 'text-danger': accountForm.hawkID.$invalid && accountForm.hawkID.$touched, 'text-success': !accountForm.hawkID.$invalid && accountForm.hawkID.$touched }">
     
-                <label class="form-control-label" for="hawkID">HawkID: </label>
+                <label class="text-warning form-control-label" for="hawkID">HawkID: </label>
                 
                 
                 <input type="text" class="form-control" ng-class="{ 'is-invalid': accountForm.hawkID.$invalid && accountForm.hawkID.$touched, 'is-valid': !accountForm.hawkID.$invalid && accountForm.hawkID.$touched }" name="hawkID" ng-model="account.hawkID" ng-minlength="2" id="hawkID" required/>
@@ -54,7 +54,7 @@
             
             <!-- password for account -->
             <div class="form-group" ng-class="{ 'text-danger': accountForm.password.$invalid && accountForm.password.$touched, 'text-success': !accountForm.password.$invalid && accountForm.password.$touched }">
-                <label class="form-control-label" for="password">Password: </label>
+                <label class="text-warning form-control-label" for="password">Password: </label>
                 <input type="password" class="form-control" ng-class="{ 'is-invalid': accountForm.password.$invalid && accountForm.password.$touched, 'is-valid': !accountForm.password.$invalid && accountForm.password.$touched }" name="password" ng-model="account.password" ng-minlength="6" id="password" required/>
                 <div ng-show="accountForm.password.$invalid && accountForm.password.$touched" >Please enter your hawkID password</div>
             </div>
