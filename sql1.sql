@@ -28,6 +28,7 @@ INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES (
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', 'abcabc','student');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', 'abcabc','faculty');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('shelbyjoe', 'Shelby', 'Joe', 'abcabc','tutor');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('zachdotzler', 'Zach', 'Dotzler', 'abcabc','student');
 
 CREATE TABLE tutorApp (
   FK_hawkID VARCHAR(50) NOT NULL,
@@ -61,6 +62,9 @@ CREATE TABLE courseName (
   courseName VARCHAR(50) NOT NULL,
   PRIMARY KEY (courseNum)
 );
+INSERT INTO courseName (courseNum,courseName) VALUES (1020,'Principles of Computing');
+INSERT INTO courseName (courseNum, courseName) VALUES (1110,'Introduction to Computer Science');
+INSERT INTO courseName (courseNum, courseName) VALUES (1210,'Computer Science I:Fundamentals');
 
 CREATE TABLE course (
     courseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -69,6 +73,9 @@ CREATE TABLE course (
     PRIMARY KEY (courseID),
     FOREIGN KEY (FK_courseNum) REFERENCES courseName(courseNum)
 );
+INSERT INTO course (FK_courseNum,sectionNum) VALUES (1020,'0A01');
+INSERT INTO course (FK_courseNum, sectionNum) VALUES (1110,'0A01');
+INSERT INTO course (FK_courseNum, sectionNum) VALUES (1210,'0A01');
 
 CREATE TABLE tutors (
     tutorID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -91,7 +98,10 @@ CREATE TABLE takesCourse (
     FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID),
     FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
-
+INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('kennyenokian',1);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('johnsmith',1);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('rachelbartlett',2);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('zachdotzler',3);
 --INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('tedmoseby', '1020');
 -- INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('rachelbartlett', '1110');
 -- INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('shelbyjoe', '1210');
