@@ -123,9 +123,9 @@ CREATE TABLE problem (
   problemID INT UNSIGNED AUTO_INCREMENT NOT NULL,
   title VARCHAR(99) NOT NULL,
   text VARCHAR(9999),
-  FK_courseID INT UNSIGNED NOT NULL,
+  FK_courseNum INT NOT NULL,
   PRIMARY KEY (problemID),
-  FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
+  FOREIGN KEY (FK_courseNum) REFERENCES courseName(courseNum)
 );
 
 CREATE TABLE tutorSlot (

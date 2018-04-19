@@ -6,6 +6,14 @@
     
     myApp.controller("dataControl", function($scope, $http, $window) {
         
+        $http.get('getproblems.php')
+            .then(function(response) {
+                $scope.data = response.data.value;
+            }
+            );
+            
+        $scope.query = {};
+        $scope.queryBy = "$";
         
         // function to send new account information to web api to add it to the database
         $scope.newAccount = function(accountDetails) {

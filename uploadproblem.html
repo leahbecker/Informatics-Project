@@ -39,6 +39,14 @@
         <h2>Upload a Problem</h2>
     </div>
     <form name="problemForm" novalidate>
+    <div class="form-group">
+        <label for="sel1">Course:</label>
+            <select class="form-control" name="course" ng-model="problem.course" id="course" required/>
+                <option>CS: 1020</option>
+                <option>CS: 1110</option>
+                <option>CS: 1210</option>
+  </select>
+</div>
     <div class = "form-groups">
         <label for="title">Title:</label>
         <input type="text" class= form-control" name="title" ng-model="problem.title" ng-minlength="2" id ="title" required/>
@@ -53,6 +61,15 @@
                 
     </div>
     </form>
+
+    <div ng-repeat="prob in data.problem | filter:query">
+        <div>
+            <h3>title:</h3>
+            {{prob.title}}
+            <h3>text:</h3>
+            {{prob.text}}
+        </div>
+    </div>
 </div>
 </body>
 </html>

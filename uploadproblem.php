@@ -6,7 +6,19 @@
     $data = json_decode(file_get_contents('php://input'), true);
     $title= $data['title'];
 	$problem = $data['problemtext'];
-    
+    $course = $data['course'];
+    if ($course == "CS: 1020"){
+        $course = 1020;
+    }
+    else if($course == "CS: 1110"){
+        $course = 1110;
+    }
+    else if($course == "CS: 1210"){
+        $course = 1210;
+    }
+    else{
+        $course="null";
+    }
    // connect to the database
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);    
     
@@ -18,7 +30,7 @@
 	
     if ($isComplete) {
         //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$title';";
-        $uploadProblem = "INSERT INTO problem (title, text, FK_courseID) VALUES ('$title','$problem',1)";
+        $uploadProblem = "INSERT INTO problem (title, text, FK_courseNum) VALUES ('$title','$problem',$course)";
         //upload the problem
         queryDB($uploadProblem, $db);
         
