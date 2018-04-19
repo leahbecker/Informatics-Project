@@ -130,12 +130,14 @@ CREATE TABLE problem (
 
 CREATE TABLE tutorSlot (
   slotID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  FK_hawkID VARCHAR(20) NOT NULL,
-  course VARCHAR(20) NOT NULL,
+  FK_student VARCHAR(50),
+  FK_tutor VARCHAR(50) NOT NULL,
+  FK_courseID INT UNSIGNED NOT NULL,
   datetime DATETIME NOT NULL,
-  student BOOLEAN,
-  canceledByTutor BOOLEAN,
-  canceledByStudent BOOLEAN,
+  canceledByTutor BOOLEAN DEFAULT False,
+  canceledByStudent BOOLEAN DEFAULT False,
   PRIMARY KEY (slotID),
-  FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID)
+  FOREIGN KEY (FK_student) REFERENCES takesCourse(hawkID),
+  FOREIGN KEY (FK_tutor) REFERENCES tutorApp(hawkID),
+  FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
