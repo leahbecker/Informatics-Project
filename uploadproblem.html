@@ -2,7 +2,7 @@
 
 <html ng-app="app">
 <head>
-    <title>Homepage</title>
+    <title>Faculty- Upload Problem</title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -24,19 +24,33 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div class="text-right">
-        <button class="btn btn-default" ng-click="logout()">Logout</button>
-    </div>
-    <div class="pt-3 row align-items-center justify-content-center">
-        <h2>What would you like to do?</h2>
+    <div class="row">
+        <div class="col">
+            <a href="facultyhome.html" class="btn btn-dark" role="button">Home</a>
+        </div>
+        <div class="col text-right">
+            <button class="btn btn-default alight-right" ng-click="logout()">Logout</button>
+        </div>
     </div>
     
-    <div class = "pt-2 text-center">
-        <a href="uploadproblem.html" class="btn btn-dark" role="button">View Practice Problems</a>
-        <button class="btn btn-default">Create an Account</button>
-        <button class="btn btn-default">Edit/Delete and Account</button>
-        
+    <div class="pt-3 row align-items-center justify-content-center">
+        <h2>Upload a Problem</h2>
     </div>
+    <form name="problemForm" novalidate>
+    <div class = "form-groups">
+        <label for="title">Title:</label>
+        <input type="text" class= form-control" name="title" ng-model="problem.title" ng-minlength="2" id ="title" required/>
+    </div>
+    <div class = "form-groups">
+        <label for="problemtext">Problem:</label>
+        <textarea class="form-control" rows="12" name = "problemtext" ng-model="problem.problemtext" ng-minlength="6" id="problemtext"></textarea>
+    </div>
+    <div class = "pt-2 text-center">
+    
+        <button class="btn btn-warning btn-lg" ng-click="uploadproblem(problem)">Upload</button>
+                
+    </div>
+    </form>
 </div>
 </body>
 </html>

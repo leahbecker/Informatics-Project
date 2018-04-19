@@ -25,6 +25,25 @@
                     alert('unexpected error');
                }
             });                        
+        };
+        
+        $scope.uploadproblem = function(accountDetails) {
+          var accountupload = angular.copy(accountDetails);
+          
+          $http.post("uploadproblem.php", accountupload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                        // send user back to home page
+                        $window.location.href = "facultyhome.html";
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
         };        
         
         // function to send new account information to web api to add it to the database
@@ -98,7 +117,7 @@
                     alert('unexpected error');
                }
             });                        
-        };             
+        };
         
         // function to check if user is logged in
         $scope.checkifloggedin = function() {
