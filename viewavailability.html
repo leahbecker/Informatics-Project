@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html ng-app="app">
@@ -29,14 +30,43 @@
             <a type="button" href="tutorhome.html" class="btn btn-dark align-left" >Home</a>
         </div>
         <div class="col text-right">
-            <button class="btn btn-dark alight-right" ng-click="logout()">Logout</button>
+            <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
         </div>
     </div>
     
     <div class="pt-3 row align-items-center justify-content-center">
-        <h2>Availability</h2>
+        <h2>View Availability</h2>
     </div>
     
+    
+    
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Weekday</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+          </tr>
+        </thead>
+                        <tbody>
+                           <tr>
+                              <th scope=”row”>
+                              <?php echo $count; ?>
+                              </th>
+                              <td>
+                              <?php echo $row['weekday']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['startTime']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['endTime']; ?>
+                              </td>
+                           </tr>
+                        </tbody>
+    </table>
+
+                  
     
     
     
