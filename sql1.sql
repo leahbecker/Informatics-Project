@@ -43,6 +43,7 @@ CREATE TABLE courseTaken (
   FFK_hawkID VARCHAR(50) NOT NULL,
   courseNum INT NOT NULL,
   courseName VARCHAR(50) NOT NULL,
+  courseGrade VARCHAR(2) NOT NULL,
   PRIMARY KEY (courseTakenID),
   FOREIGN KEY (FFK_hawkID) REFERENCES tutorApp(FK_hawkID)
   
@@ -89,6 +90,18 @@ CREATE TABLE tutors (
 
 -- INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('johnsmith', '1020, 1110, 1210');
 -- INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('leahbecker', '1020, 1110, 1210');
+
+
+CREATE TABLE weeklySlot (
+    hawkID VARCHAR(50) NOT NULL,
+    weekday VARCHAR(50) NOT NULL,
+    startTime INT NOT NULL,
+    endTime INT NOT NULL,
+    PRIMARY KEY (hawkID),
+    FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID),
+    
+);
+
 
 CREATE TABLE takesCourse (
     takesCourseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
