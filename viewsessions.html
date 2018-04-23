@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html ng-app="app">
@@ -18,7 +19,6 @@
     <script src="app.module.js"></script>
     <script src="data.app.controller.js"></script>
     <script src="app.filter.js"></script>
-    
 
 </head>
 
@@ -27,7 +27,7 @@
     
     <div class="row">
         <div class="col text-left">
-            <a type="button" href="tutorhome.html" class="btn btn-dark align-left">Home</a>
+            <a type="button" href="tutorhome.html" class="btn btn-dark align-left" >Home</a>
         </div>
         <div class="col text-right">
             <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
@@ -35,15 +35,45 @@
     </div>
     
     <div class="pt-3 row align-items-center justify-content-center">
-        <h2>View Sessions</h2>
+        <h2>Potential Tutors</h2>
     </div>
+    
+    
+    
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Session #</th>
+            <th scope="col">Student hawkID</th>
+            <th scope="col">Course</th>
+            <th scope="col">Date & Time</th>
+          </tr>
+        </thead>
+                        <tbody>
+                           <tr>
+                              <th scope=”row”>
+                              <?php echo $count; ?>
+                              </th>
+                              <td>
+                              <?php echo $row['slotID']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['studentHawkID']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['course']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['datetime']; ?>
+                              </td>
+                           </tr>
+                        </tbody>
+    </table>
 
-
-<div class="row align-items-center justify-content-center">
-    <div class="col-xs-12">
-        
-    </div>
-</div>    
+                  
+    
+    
+    
             
 </div>
 </body>
