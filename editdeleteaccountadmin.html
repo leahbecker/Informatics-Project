@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <title>Homepage</title>
+
+    <!-- These are the links to bootstrap code -->
+    <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    
+    <!-- link to angular -->
+    <!-- you can download it from https://angularjs.org/ then you need to upload it to the webdev server. -->
+    <script src="angular.min.js"></script>
+    
+    <script src="app.module.js"></script>
+    <script src="data.app.controller.js"></script>
+    <script src="app.filter.js"></script>
+
+</head>
+
+<body>
+<div class="container" ng-controller="dataControl">
+    
+    <div class="row">
+        <div class="col text-left">
+            <a type="button" href="adminhome.html" class="btn btn-dark align-left" >Home</a>
+        </div>
+        <div class="col text-right">
+            <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
+        </div>
+    </div>
+    
+    <div class="pt-3 row align-items-center justify-content-center">
+        <h2>Edit/Delete Account</h2>
+    </div>
+    
+    
+    
+    
+            
+</div>
+</body>
+</html>
