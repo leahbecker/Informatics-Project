@@ -40,6 +40,43 @@
     
     
     
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">hawkID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Course(s) Taken</th>
+            <th scope="col">Grade(s)</th>
+          </tr>
+        </thead>
+                        <tbody>
+                           <tr>
+                              <th scope=”row”>
+                              <?php echo $count; ?>
+                              </th>
+                              <td>
+                              <?php echo $row[‘hawkID’]; ?>
+                              </td>
+                              <td>
+                              <?php echo $row[‘email’]; ?>
+                              </td>
+                              <td>
+                              <?php echo $row[‘phone’]; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['courseName]; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['courseGrade']; ?>
+                              </td>
+                           </tr>
+                        </tbody>
+    </table>
+
+                  
+    
+    
     
             
 </div>
