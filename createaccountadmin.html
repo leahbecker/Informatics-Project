@@ -33,11 +33,36 @@
             <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
         </div>
     </div>
-    
-    <div class="pt-3 row align-items-center justify-content-center">
+        <div class="pt-3 row align-items-center justify-content-center">
         <h2>Create an Account</h2>
     </div>
+    <form name="accountForm" novalidate>
+        <div class="form-group">
+            <div class="col-xs-4">
+                <input type="text" class="form-control" placeholder="hawkID" ng-model="account.hawkID" ng-minlength="2" id="hawkID" required/>
+            </div>
+            <div class = "col-xs-4">
+                <input type="text" class= form-control" placeholder="first name" ng-model="account.firstName" ng-minlength="2" id ="firstName" required/>
+            </div>
+            <div class = "col-xs-4">
+                <input type="text" class="form-control" placeholder="last name" ng-model="account.lastName" ng-minlength="2" id="lastName" required/>
+            </div>
+        </div>
+    </form>
+    <div class = "pt-2 text-center">
     
+        <button class="btn btn-warning btn-lg" ng-click="createaccount(account)">Create Account</button>
+    
+    
+    <div ng-repeat="acct in data.account | filter:query">
+        <div>
+            <h3>hawkID:</h3>
+            {{acct.hawkID}}
+            <h3>name:</h3>
+            {{acct.firstname acct.lastName}}
+        </div>
+    </div>
+</div>
     
     
     
