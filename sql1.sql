@@ -151,6 +151,6 @@ CREATE TABLE tutorSlot (
   canceledByStudent BOOLEAN DEFAULT False,
   PRIMARY KEY (slotID),
   FOREIGN KEY (FK_student) REFERENCES takesCourse(hawkID),
-  FOREIGN KEY (FK_tutor) REFERENCES tutorApp(hawkID),
+  FOREIGN KEY (FK_tutor) REFERENCES tutors(hawkID),
   FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
