@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 
 <html ng-app="app">
 <head>
-    <title>Tutor- Edit Availability</title>
+    <title>Tutor - Edit Availability</title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -36,6 +37,36 @@
     <div class="pt-3 row align-items-center justify-content-center">
         <h2>Edit Availability</h2>
     </div>
+    
+    
+    
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Weekday</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+          </tr>
+        </thead>
+                        <tbody>
+                           <tr>
+                              <th scope=”row”>
+                              <?php echo $count; ?>
+                              </th>
+                              <td>
+                              <?php echo $row['weekday']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['startTime']; ?>
+                              </td>
+                              <td>
+                              <?php echo $row['endTime']; ?>
+                              </td>
+                           </tr>
+                        </tbody>
+    </table>
+
+                  
     
     
     
