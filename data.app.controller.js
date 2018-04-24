@@ -11,7 +11,7 @@
                 $scope.data = response.data.value;
             }
             );
-            
+        
         $scope.query = {};
         $scope.queryBy = "$";
         

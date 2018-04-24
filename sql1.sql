@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS tutorSlot;
 DROP TABLE IF EXISTS problem;
 DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS takesCourse;
+DROP TABLE IF EXISTS weeklySlot;
 DROP TABLE IF EXISTS tutors;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS courseName;
@@ -98,7 +99,7 @@ CREATE TABLE weeklySlot (
     startTime INT NOT NULL,
     endTime INT NOT NULL,
     PRIMARY KEY (hawkID),
-    FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID),
+    FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID)
     
 );
 
@@ -142,15 +143,15 @@ CREATE TABLE problem (
 );
 
 CREATE TABLE tutorSlot (
-  slotID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  slotID INT UNSIGNED AUTO_INCREMENT NOT NULL,
   FK_student VARCHAR(50),
-  FK_tutor VARCHAR(50) NOT NULL,
+  FK_tutor INT UNSIGNED NOT NULL,
   FK_courseID INT UNSIGNED NOT NULL,
   datetime DATETIME NOT NULL,
   canceledByTutor BOOLEAN DEFAULT False,
   canceledByStudent BOOLEAN DEFAULT False,
   PRIMARY KEY (slotID),
-  FOREIGN KEY (FK_student) REFERENCES takesCourse(hawkID),
-  FOREIGN KEY (FK_tutor) REFERENCES tutors(hawkID),
+  FOREIGN KEY (FK_student) REFERENCES account(hawkID),
+  FOREIGN KEY (FK_tutor) REFERENCES tutors(tutorID),
   FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
