@@ -11,6 +11,13 @@
                 $scope.data = response.data.value;
             }
             );
+            
+        $http.get('getSlots.php')
+            .then(function(response) {
+                $scope.data = response.data.value;
+            }
+            );
+        
         
         $scope.query = {};
         $scope.queryBy = "$";

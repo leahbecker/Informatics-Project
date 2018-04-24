@@ -40,7 +40,7 @@
     
     
     
-    <table class="table table-striped">
+   <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">Session #</th>
@@ -49,25 +49,28 @@
             <th scope="col">Date & Time</th>
           </tr>
         </thead>
-                        <tbody>
+        <div >
+                        <tbody ng-repeat = "slot in data.slot | filter:query">
                            <tr>
                               <th scope=”row”>
-                              <?php echo $count; ?>
+                              {{slot.slotID}}
                               </th>
                               <td>
-                              <?php echo $row['slotID']; ?>
+                              {{slot.FK_student}}
                               </td>
                               <td>
-                              <?php echo $row['studentHawkID']; ?>
+                              {{slot.courseName}}
                               </td>
                               <td>
-                              <?php echo $row['course']; ?>
+                              {{slot.datetime}}
                               </td>
                               <td>
-                              <?php echo $row['datetime']; ?>
+                              
                               </td>
                            </tr>
                         </tbody>
+                        
+        </div>
     </table>
 
                   

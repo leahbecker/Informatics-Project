@@ -90,7 +90,7 @@ CREATE TABLE tutors (
 );
 
 -- INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('johnsmith', '1020, 1110, 1210');
--- INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('leahbecker', '1020, 1110, 1210');
+INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('leahbecker', 1);
 
 
 CREATE TABLE weeklySlot (
@@ -145,13 +145,14 @@ CREATE TABLE problem (
 CREATE TABLE tutorSlot (
   slotID INT UNSIGNED AUTO_INCREMENT NOT NULL,
   FK_student VARCHAR(50),
-  FK_tutor INT UNSIGNED NOT NULL,
+  FK_tutor VARCHAR(50),
   FK_courseID INT UNSIGNED NOT NULL,
   datetime DATETIME NOT NULL,
   canceledByTutor BOOLEAN DEFAULT False,
   canceledByStudent BOOLEAN DEFAULT False,
   PRIMARY KEY (slotID),
   FOREIGN KEY (FK_student) REFERENCES account(hawkID),
-  FOREIGN KEY (FK_tutor) REFERENCES tutors(tutorID),
+  FOREIGN KEY (FK_tutor) REFERENCES account(hawkID),
   FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES ('kennyenokian', 'leahbecker', 1, '2018-04-26 09:30:00');

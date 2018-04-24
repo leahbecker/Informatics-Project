@@ -49,7 +49,28 @@
             <th scope="col">Date & Time</th>
           </tr>
         </thead>
-                        <tbody>
+        <div >
+                        <tbody ng-repeat = "slot in data.slot | filter:query">
+                           <tr>
+                              <th scope=”row”>
+                              {{slot.slotID}}
+                              </th>
+                              <td>
+                              {{slot.FK_tutor}}
+                              </td>
+                              <td>
+                              {{slot.courseName}}
+                              </td>
+                              <td>
+                              {{slot.datetime}}
+                              </td>
+                              <td>
+                              
+                              </td>
+                           </tr>
+                        </tbody>
+                        
+                        <!-- <tbody>
                            <tr>
                               <th scope=”row”>
                               <?php echo $count; ?>
@@ -67,7 +88,8 @@
                               <?php echo $row['datetime']; ?>
                               </td>
                            </tr>
-                        </tbody>
+                        </tbody>-->
+        </div>
     </table>
 
                   
