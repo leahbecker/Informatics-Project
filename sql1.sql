@@ -38,6 +38,7 @@ CREATE TABLE tutorApp (
   FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID),
   PRIMARY KEY (FK_hawkID)
 );
+INSERT INTO tutorApp (FK_hawkID, email, phone) VALUES ('johnsmith', 'johnsmith@uiowa.edu', '123-456-7890');
 
 CREATE TABLE courseTaken (
   courseTakenID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -47,8 +48,8 @@ CREATE TABLE courseTaken (
   courseGrade VARCHAR(2) NOT NULL,
   PRIMARY KEY (courseTakenID),
   FOREIGN KEY (FFK_hawkID) REFERENCES tutorApp(FK_hawkID)
-  
 );
+INSERT INTO courseTaken (FFK_hawkID, courseNum, courseName, courseGrade) VALUES ('johnsmith', 1020, 'Principles of Computing', 'B-');
 
 CREATE TABLE admins (
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
@@ -56,7 +57,6 @@ CREATE TABLE admins (
     PRIMARY KEY (FK_hawkID),
     FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID)
 );
-
 INSERT INTO admins (isAdmin, FK_hawkID) VALUES (True, 'ashleyhewitt');
 
 CREATE TABLE courseName (
@@ -100,9 +100,7 @@ CREATE TABLE weeklySlot (
     endTime INT NOT NULL,
     PRIMARY KEY (hawkID),
     FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID)
-    
 );
-
 
 CREATE TABLE takesCourse (
     takesCourseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -141,6 +139,9 @@ CREATE TABLE problem (
   PRIMARY KEY (problemID),
   FOREIGN KEY (FK_courseNum) REFERENCES courseName(courseNum)
 );
+INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1020 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1020',1020);
+INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1110 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1110',1020);
+INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1210 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1210',1020);
 
 CREATE TABLE tutorSlot (
   slotID INT UNSIGNED AUTO_INCREMENT NOT NULL,
