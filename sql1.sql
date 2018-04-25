@@ -71,7 +71,7 @@ INSERT INTO courseName (courseNum, courseName) VALUES (1210,'Computer Science I:
 CREATE TABLE course (
     courseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     FK_courseNum INT NOT NULL,
-    sectionNum INT NOT NULL,
+    sectionNum VARCHAR(50) NOT NULL,
     PRIMARY KEY (courseID),
     FOREIGN KEY (FK_courseNum) REFERENCES courseName(courseNum)
 );
