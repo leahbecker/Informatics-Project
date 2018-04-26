@@ -11,7 +11,7 @@
     } else {
         // if we are not logged in
         $isloggedin = false;
-        $id = "not logged in";        
+        $username = "not logged in";        
     }
 
     // send response back
