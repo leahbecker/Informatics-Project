@@ -5,6 +5,7 @@
     session_start();
     if (isset($_SESSION['username'])) {
         // if the session variable username is set, then we are logged in
+        
         $isloggedin = true;
         $username = $_SESSION['username'];
     } else {
@@ -18,6 +19,7 @@
     $response['status'] = 'success';
     $response['loggedin'] = $isloggedin;
     $response['username'] = $id;
+    $response['course'] = $_SESSION['course'];
     header('Content-Type: application/json');
     echo(json_encode($response));    
 ?>

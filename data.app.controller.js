@@ -60,7 +60,7 @@
                }
             });                        
         };        
-        
+
         // function to send new account information to web api to add it to the database
         $scope.login = function(accountDetails) {
           var accountupload = angular.copy(accountDetails);
@@ -150,7 +150,33 @@
                     alert('unexpected error');
                }
             });                        
-        };       
+        };
+        
+         $scope.problemredirect = function() {
+          $http.post("isloggedin.php")
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.course == 1020) {
+                        $window.location.href = "viewproblems1020student.html";
+                    }
+                    else if (response.data.course ==1110) {
+                        $window.location.href = "viewproblems1110student.html";
+                    }
+                    else if (response.data.course == 1210) {
+                        $window.location.href = "viewproblems1210student.html";
+                    }
+                    else {
+                        alert('Not enrolled in a course');
+                        // successful
+                        // set $scope.isloggedin based on whether the user is logged in or not
+                        //$scope.isloggedin = response.data.loggedin;
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };
+        
 
     });
     

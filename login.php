@@ -30,9 +30,15 @@
     if ($isComplete) {
         //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
         $query = "SELECT hawkID, hashedpass,userRole FROM account WHERE hawkID = '$username';";
+        
         $query2 = "SELECT isAdmin FROM admins WHERE FK_hawkID = '$username';";
+        
+        $query3 = "SELECT DISTINCT course.FK_courseNum FROM course,takesCourse
+        WHERE courseID=(SELECT FK_courseID FROM takesCourse WHERE FK_hawkID = '$username');";
+        
         $result = queryDB($query, $db);
         $result2 = queryDB($query2, $db);
+        $result3 = queryDB($query3, $db);
         
         
         if (nTuples($result) == 0) {
@@ -57,6 +63,9 @@
         $row2 = nextTuple($result2);
         $admin = $row2['isAdmin'];
         
+        $row3 = nextTuple($result3);
+        $courseTaken = $row3['FK_courseNum'];
+        
 		// compare entered password to the password on the database
         // $hashedpass is the version of hashed password stored in the database for $username
         // $hashedpass includes the salt, and php's crypt function knows how to extract the salt from $hashedpass
@@ -78,8 +87,8 @@
         // if the session variable 'username' is set, then we assume that the user is logged in
         session_start();
         $_SESSION['hawkID'] = $username;
+        $_SESSION['course'] = $courseTaken;
 		//$_SESSION['accountid'] = $id;
-        
         // send response back
         $response = array();
         $response['status'] = 'success';
