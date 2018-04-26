@@ -14,7 +14,7 @@
             
         $http.get('getSlots.php')
             .then(function(response) {
-                $scope.data = response.data.value;
+                $scope.slots = response.data.value;
             }
             );
         

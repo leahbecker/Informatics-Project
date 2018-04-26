@@ -50,8 +50,8 @@
           </tr>
         </thead>
         <div >
-                        <tbody ng-repeat = "slot in data.slot | filter:query">
-                           <tr>
+                        <tbody>
+                           <tr ng-repeat = "slot in slots.slot">
                               <th scope=”row”>
                               {{slot.slotID}}
                               </th>
@@ -70,25 +70,7 @@
                            </tr>
                         </tbody>
                         
-                        <!-- <tbody>
-                           <tr>
-                              <th scope=”row”>
-                              <?php echo $count; ?>
-                              </th>
-                              <td>
-                              <?php echo $row['slotID']; ?>
-                              </td>
-                              <td>
-                              <?php echo $row['tutorHawkID']; ?>
-                              </td>
-                              <td>
-                              <?php echo $row['course']; ?>
-                              </td>
-                              <td>
-                              <?php echo $row['datetime']; ?>
-                              </td>
-                           </tr>
-                        </tbody>-->
+
         </div>
     </table>
 

@@ -3,11 +3,11 @@
 
     
     session_start();
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['hawkID'])) {
         // if the session variable username is set, then we are logged in
         
         $isloggedin = true;
-        $username = $_SESSION['username'];
+        $username = $_SESSION['hawkID'];
     } else {
         // if we are not logged in
         $isloggedin = false;
@@ -18,7 +18,7 @@
     $response = array();
     $response['status'] = 'success';
     $response['loggedin'] = $isloggedin;
-    $response['username'] = $id;
+    $response['username'] = $username;
     $response['course'] = $_SESSION['course'];
     header('Content-Type: application/json');
     echo(json_encode($response));    
