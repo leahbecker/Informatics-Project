@@ -89,18 +89,24 @@ CREATE TABLE tutors (
     
 );
 
--- INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('johnsmith', '1020, 1110, 1210');
 INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('leahbecker', 1);
+INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('lilyjohnson', 1);
+INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('shelbyjoe', 1);
 
 
 CREATE TABLE weeklySlot (
     hawkID VARCHAR(50) NOT NULL,
     weekday VARCHAR(50) NOT NULL,
-    startTime INT NOT NULL,
-    endTime INT NOT NULL,
+    startTime VARCHAR(50) NOT NULL,
+    endTime VARCHAR(50) NOT NULL,
     PRIMARY KEY (hawkID),
     FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID)
 );
+
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('leahbecker', 'Monday', '9:00 AM', '10:00 AM');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('lilyjohnson', 'Tuesday', '12:00 PM', '1:00 PM');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('shelbyjoe', 'Thursday', '3:00 PM', '4:00 PM');
+
 
 CREATE TABLE takesCourse (
     takesCourseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -114,9 +120,7 @@ INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('kennyenokian',1);
 INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('johnsmith',1);
 INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('rachelbartlett',2);
 INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('zachdotzler',3);
---INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('tedmoseby', '1020');
--- INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('rachelbartlett', '1110');
--- INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('shelbyjoe', '1210');
+
 
 CREATE TABLE instructsCourse (
     instructsCourseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -127,9 +131,6 @@ CREATE TABLE instructsCourse (
     FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
 
--- INSERT INTO instructsCourse (FK_hawkID, FK_courseID) VALUES ('jamescharles', '1020');
--- INSERT INTO instructsCourse (FK_hawkID, FK_courseID) VALUES ('kennyenokian', '1110');
--- INSERT INTO instructsCourse (FK_hawkID, FK_courseID) VALUES ('lilyjohnson', '1210');
 
 CREATE TABLE problem (
   problemID INT UNSIGNED AUTO_INCREMENT NOT NULL,
