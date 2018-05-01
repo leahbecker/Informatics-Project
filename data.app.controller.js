@@ -100,6 +100,22 @@
             });                        
         };
         
+         //used by the home button, brings user to the correct home page for their role
+        $scope.goHome = function(role){
+            if(role == 'tutor'){
+                $window.location.href = "tutorhome.html";
+            }
+            else if(role == 'faculty'){
+                $window.location.href = "facultyhome.html";
+            }
+            else if(role == 'student'){
+                $window.location.href = "index.html";
+            }
+            else{
+                alert(role);
+            }
+        };
+        
         $scope.adminlogin = function(accountDetails) {
           var accountupload = angular.copy(accountDetails);
           
