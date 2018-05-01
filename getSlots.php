@@ -1,40 +1,43 @@
 <?php
+session_start();
 // We need to include these two files in order to work with the database
 include_once('config.php');
 include_once('dbutils.php');
 
-$user = $_SESSION['username'];
+//$user = $_SESSION['username'];
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
-
+$user = $_SESSION['username'];
 $tablename = "tutorSlot";
 //*******change this to only get slots that do not have an assigned student
 //(WHERE FK_student = null)
-$query = "SELECT slotID, FK_student, FK_tutor, courseName.courseName, datetime FROM $tablename,courseName
-WHERE courseName.courseNum =
+$queryAvailableSlots = "SELECT slotID, FK_student, FK_tutor, courseName.courseName, datetime FROM $tablename,courseName
+WHERE FK_student is null
+AND courseName.courseNum =
 (SELECT FK_courseNum FROM course WHERE courseID = FK_courseID);";
 
 $querySlotsTakenByUser = "SELECT slotID, FK_student, FK_tutor, courseName.courseName, datetime FROM $tablename,courseName
-WHERE courseName.courseNum =
-(SELECT FK_courseNum FROM course WHERE courseID = FK_courseID) AND FK_student = '$user';";
+WHERE FK_student = '$user'
+AND courseName.courseNum =
+(SELECT course.FK_courseNum FROM course WHERE course.courseID = tutorSlot.FK_courseID)";
 
-$result = queryDB($query, $db);
+$result = queryDB($queryAvailableSlots, $db);
 $resultT = queryDB($querySlotsTakenByUser, $db);
 
-$slots = array();
+$availableSlots = array();
 $i = 0;
 
 // go through the results one by one
 while ($currSlot = nextTuple($result)) {
-    $slots[$i] = $currSlot;
+    $availableSlots[$i] = $currSlot;
     $i++;
 }
 
-$slots2 = array();
+$slotsTakenByUser = array();
 $i = 0;
 
 // go through the results one by one
-while ($currSlot = nextTuple($result)) {
+while ($currSlot = nextTuple($resultT)) {
     $slotsTakenByUser[$i] = $currSlot;
     $i++;
 }
@@ -45,7 +48,7 @@ $response = array();
 $response['status'] = 'success';
 //$response['value']['user'] = $_Session['username'];
 //$response2['status'] = 'success';
-$response['value']['slot'] = $slots;
+$response['value']['availableSlots'] = $availableSlots;
 //$response['value']['user'] = $user;
 $response['value']['slotsTakenByUser'] = $slotsTakenByUser;
 //$response2['value']['problem'] = $problems2;

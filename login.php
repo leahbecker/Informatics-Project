@@ -1,4 +1,5 @@
 <?php
+    //session_start();
     include_once('config.php');
     include_once('dbutils.php');
     
@@ -29,7 +30,7 @@
 	
     if ($isComplete) {
         //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$username';";
-        $query = "SELECT hawkID, hashedpass,userRole FROM account WHERE hawkID = '$username';";
+        $query = "SELECT hawkID, hashedpass,userRole,firstName FROM account WHERE hawkID = '$username';";
         
         $query2 = "SELECT isAdmin FROM admins WHERE FK_hawkID = '$username';";
         
@@ -56,6 +57,7 @@
 		$hashedpass = $row['hashedpass'];
 		$username = $row['hawkID'];
         $role = $row['userRole'];
+        $name = $row['firstName'];
 		
         //$row2 = nextTuple($result2);
         //$admin = $row2;
@@ -86,8 +88,9 @@
         // start a session
         // if the session variable 'username' is set, then we assume that the user is logged in
         session_start();
-        $_SESSION['hawkID'] = $username;
+        $_SESSION['username'] = $username;
         $_SESSION['course'] = $courseTaken;
+        $_SESSION['name'] = $name;
 		//$_SESSION['accountid'] = $id;
         // send response back
         $response = array();
@@ -95,6 +98,7 @@
 		$response['message'] = 'logged in';
         $response['role'] = $role;
         $response['admin'] = $admin;
+        //$response['name'] = $name;
         header('Content-Type: application/json');
         echo(json_encode($response));
     } else {

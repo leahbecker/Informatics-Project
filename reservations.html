@@ -25,21 +25,12 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div class="row">
-        <div class="col text-left">
-            <a type="button" href="index.html" class="btn btn-dark align-left" >Home</a>
-        </div>
-        <div class="col text-right">
-            <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
-        </div>
-    </div>
+   <div ng-include src="'header.php'"></div>
     
     <div class="pt-3 row align-items-center justify-content-center">
         <h2>Reservations</h2>
     </div>
-    
-    
-    
+    <!-- Slots taken by the user--->
     <table class="table table-striped">
         <thead>
           <tr>
@@ -50,8 +41,9 @@
           </tr>
         </thead>
         <div >
+            <h3>Your Reservations:</h3>
                         <tbody>
-                           <tr ng-repeat = "slot in slots.slot">
+                           <tr ng-repeat = "slot in slots.slotsTakenByUser">
                               <th scope=”row”>
                               {{slot.slotID}}
                               </th>
@@ -72,13 +64,46 @@
                         
 
         </div>
+        
     </table>
+    
+    
+    <!-- All slots available--->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Session #</th>
+            <th scope="col">Tutor hawkID</th>
+            <th scope="col">Course</th>
+            <th scope="col">Date & Time</th>
+          </tr>
+        </thead>
+        <div >
+            <h3>Available Reservations: </h3>
+                        <tbody>
+                           <tr ng-repeat = "slot in slots.availableSlots">
+                              <th scope=”row”>
+                              {{slot.slotID}}
+                              </th>
+                              <td>
+                              {{slot.FK_tutor}}
+                              </td>
+                              <td>
+                              {{slot.courseName}}
+                              </td>
+                              <td>
+                              {{slot.datetime}}
+                              </td>
+                              <td>
+                              
+                              </td>
+                           </tr>
+                        </tbody>
+                        
 
-                  
-    
-    
-    
-            
+        </div>
+        
+    </table> 
 </div>
 </body>
 </html>

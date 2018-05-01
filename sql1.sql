@@ -157,3 +157,8 @@ CREATE TABLE tutorSlot (
   FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
 INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES ('kennyenokian', 'leahbecker', 1, '2018-04-26 09:30:00');
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES ('johnsmith', 'lilyjohnson', 1, '2018-05-20 09:00:00');
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'leahbecker', 1, '2018-05-21 09:30:00');
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'leahbecker', 1, '2018-05-25 09:00:00');
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'lilyjohnson', 1, '2018-06-01 12:30:00');
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'leahbecker', 1, '2018-06-02 10:30:00');
