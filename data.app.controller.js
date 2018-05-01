@@ -19,7 +19,7 @@
             
         $http.get('weeklySlots.php')
             .then(function(response) {
-                $scope.slots = response.data.value;
+                $scope.weeklySlots = response.data.value;
             }
             );
         
