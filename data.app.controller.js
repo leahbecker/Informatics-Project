@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
     
@@ -13,6 +12,12 @@
             );
             
         $http.get('getSlots.php')
+            .then(function(response) {
+                $scope.slots = response.data.value;
+            }
+            );
+            
+        $http.get('weeklySlots.php')
             .then(function(response) {
                 $scope.slots = response.data.value;
             }
