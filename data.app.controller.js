@@ -22,10 +22,16 @@
                 $scope.weeklySlots = response.data.value;
             }
             );
-                    
-        $http.get('editavailability.php')
+            
+            $http.get('editavailability.php')
             .then(function(response) {
                 $scope.editSlots = response.data.value;
+            }
+            );
+            
+            $http.get('tutorapp.php')
+            .then(function(response) {
+                $scope.tutorApp = response.data.value;
             }
             );
         
@@ -178,6 +184,8 @@
                }
             });                        
         };
+        
+
         
          $scope.problemredirect = function() {
           $http.post("isloggedin.php")
