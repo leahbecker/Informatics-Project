@@ -38,7 +38,10 @@ CREATE TABLE tutorApp (
   FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID),
   PRIMARY KEY (FK_hawkID)
 );
-INSERT INTO tutorApp (FK_hawkID, email, phone) VALUES ('johnsmith', 'johnsmith@uiowa.edu', '123-456-7890');
+INSERT INTO tutorApp (FK_hawkID, email, phone) VALUES ('leahbecker', 'leah-becker@uiowa.edu', '123-456-7890');
+INSERT INTO tutorApp (FK_hawkID, email, phone) VALUES ('lilyjohnson', 'lily-johnson@uiowa.edu', '234-567-8901');
+INSERT INTO tutorApp (FK_hawkID, email, phone) VALUES ('shelbyjoe', 'shelby-joe@uiowa.edu', '345-678-9012');
+
 
 CREATE TABLE courseTaken (
   courseTakenID INT UNSIGNED AUTO_INCREMENT NOT NULL,
