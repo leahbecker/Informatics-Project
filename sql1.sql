@@ -32,7 +32,7 @@ INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES (
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('zachdotzler', 'Zach', 'Dotzler', 'abcabc','student');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('jessday', 'Jess', 'Day', 'abcabc','tutor');
 
-
+/*
 CREATE TABLE tutorApp (
   FK_hawkID VARCHAR(50) NOT NULL,
   email VARCHAR(60) NOT NULL,
@@ -41,18 +41,20 @@ CREATE TABLE tutorApp (
   PRIMARY KEY (FK_hawkID)
 );
 INSERT INTO tutorApp (FK_hawkID, email, phone) VALUES ('jessday', 'jess-day@uiowa.edu', '123-456-7890');
-
+*/
 
 CREATE TABLE courseTaken (
   courseTakenID INT UNSIGNED AUTO_INCREMENT NOT NULL,
   FFK_hawkID VARCHAR(50) NOT NULL,
+  email VARCHAR(60) NOT NULL,
+  phone VARCHAR(12) NOT NULL,
   courseNum INT NOT NULL,
   courseName VARCHAR(50) NOT NULL,
   courseGrade VARCHAR(2) NOT NULL,
   PRIMARY KEY (courseTakenID),
-  FOREIGN KEY (FFK_hawkID) REFERENCES tutorApp(FK_hawkID)
+  FOREIGN KEY (FFK_hawkID) REFERENCES account(hawkID)
 );
-INSERT INTO courseTaken (FFK_hawkID, courseNum, courseName, courseGrade) VALUES ('jessday', 1020, 'Principles of Computing', 'B-');
+INSERT INTO courseTaken (FFK_hawkID, email, phone, courseNum, courseName, courseGrade) VALUES ('jessday', 'jess-day@uiowa.edu', '123-456-7890', 1020, 'Principles of Computing', 'B-');
 
 CREATE TABLE admins (
     isAdmin BOOLEAN NOT NULL DEFAULT FALSE,
