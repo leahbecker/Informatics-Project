@@ -29,9 +29,10 @@
             }
             );
             
+            
             $http.get('tutorapp.php')
             .then(function(response) {
-                $scope.tutorApp = response.data.value;
+                $scope.courseTaken = response.data.value;
             }
             );
         
