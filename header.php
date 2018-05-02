@@ -7,7 +7,7 @@
             ng-disabled ="home">Home</button>
         </div>
         <div class="col text-right">
-            <button class="btn btn-dark align-right" ng-click="logout()">Logout, <?php
+            <button class="btn btn-dark align-right" ng-click="logout()">Logout<?php
             session_start();
             $firstName = $_SESSION['name'];
             echo "$firstName";
