@@ -22,6 +22,12 @@
                 $scope.weeklySlots = response.data.value;
             }
             );
+                    
+        $http.get('editavailability.php')
+            .then(function(response) {
+                $scope.editSlots = response.data.value;
+            }
+            );
         
         
         $scope.query = {};
