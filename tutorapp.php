@@ -7,21 +7,22 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 // $user = $_SESSION['username'];
-$tablename = "tutorApp";
+$tablename = "courseTaken";
 //*******change this to only get slots that do not have an assigned student
 //(WHERE FK_student = null)
-$query = "SELECT FK_hawkID, email, phone FROM $tablename;";
+$query = "SELECT courseTakenID, FFK_hawkID, email, phone, courseNum, courseName, courseGrade FROM $tablename;";
 
 $result = queryDB($query, $db);
 
-$tutorAppArray = array();
+$courseTakenArray = array();
 $i = 0;
 
 // go through the results one by one
-while ($currApp = nextTuple($result)) {
-    $tutorAppArray[$i] = $currApp;
+while ($currCourse = nextTuple($result)) {
+    $courseTakenArray[$i] = $currCourse;
     $i++;
 }
+
 
 // put together a JSON object
 $response = array();
@@ -29,7 +30,7 @@ $response = array();
 $response['status'] = 'success';
 //$response['value']['user'] = $_Session['username'];
 //$response2['status'] = 'success';
-$response['value']['tutorApp'] = $tutorAppArray;
+$response['value']['courseTaken'] = $courseTakenArray;
 //$response['value']['user'] = $user;
 header('Content-Type: application/json');
 echo(json_encode($response));
