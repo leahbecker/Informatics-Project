@@ -32,9 +32,10 @@
             
             $http.get('tutorapp.php')
             .then(function(response) {
-                $scope.courseTaken = response.data.value;
+                $scope.tutorApp = response.data.value;
             }
             );
+        
         
         
         $scope.query = {};
