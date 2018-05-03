@@ -24,12 +24,7 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div class="text-right">
-        <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
-    </div>
-    <div class="pt-3 row align-items-center justify-content-center">
-        <h2>What would you like to do?</h2>
-    </div>
+    <div ng-init = "home = true" ng-include src="'header.php'"></div>
     
     <div class = "pt-2 text-center">
         <a href="uploadproblem.html" class="btn btn-dark" role="button">Upload/View Practice Problems</a>

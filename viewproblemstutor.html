@@ -24,14 +24,7 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div class="row">
-        <div class="col text-left">
-            <a type="button" href="tutorhome.html" class="btn btn-dark align-left" >Home</a>
-        </div>
-        <div class="col text-right">
-            <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
-        </div>
-    </div>
+    <div ng-include src="'header.php'"></div>
     
     <div class="pt-3 row align-items-center justify-content-center">
         <h2>View Problems</h2>
