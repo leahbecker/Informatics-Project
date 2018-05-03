@@ -7,18 +7,8 @@
     $title= $data['title'];
 	$problem = $data['problemtext'];
     $course = $data['course'];
-    if ($course == "CS: 1020"){
-        $course = 1020;
-    }
-    else if($course == "CS: 1110"){
-        $course = 1110;
-    }
-    else if($course == "CS: 1210"){
-        $course = 1210;
-    }
-    else{
-        $course="null";
-    }
+    
+
    // connect to the database
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);    
     

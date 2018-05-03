@@ -152,6 +152,45 @@
             });                        
         };
         
+        $scope.reserve = function(slot) {
+        //var slotUpload = angular.copy(slot);
+          
+          $http.post("reservations.php", slot)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    }
+                 else  {
+                    alert('Reserved!');
+                    location.reload();
+               }
+               } else{
+                alert('unexpected error');
+               }
+            });                        
+        };
+        
+        $scope.cancel = function(slot) {
+        //var slotUpload = angular.copy(slot);
+          
+          $http.post("cancelReservations.php", slot)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    }
+                 else  {
+                    alert('Canceled');
+                    location.reload();
+               }
+               } else{
+                alert('unexpected error');
+               }
+            });                        
+        };
+        
+        
         // function to log the user out
         $scope.logout = function() {
           $http.post("logout.php")

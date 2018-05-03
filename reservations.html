@@ -38,6 +38,7 @@
             <th scope="col">Tutor hawkID</th>
             <th scope="col">Course</th>
             <th scope="col">Date & Time</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <div >
@@ -57,7 +58,7 @@
                               {{slot.datetime}}
                               </td>
                               <td>
-                              
+                              <button class="btn btn-danger" ng-click="cancel(slot)">Cancel</button>
                               </td>
                            </tr>
                         </tbody>
@@ -76,6 +77,7 @@
             <th scope="col">Tutor hawkID</th>
             <th scope="col">Course</th>
             <th scope="col">Date & Time</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <div >
@@ -95,7 +97,7 @@
                               {{slot.datetime}}
                               </td>
                               <td>
-                              
+                              <button class="btn btn-primary" ng-click="reserve(slot)">Reserve</button>
                               </td>
                            </tr>
                         </tbody>
