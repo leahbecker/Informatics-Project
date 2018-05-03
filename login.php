@@ -91,6 +91,7 @@
         $_SESSION['username'] = $username;
         $_SESSION['course'] = $courseTaken;
         $_SESSION['name'] = $name;
+        $_SESSION['role'] = $role;
 		//$_SESSION['accountid'] = $id;
         // send response back
         $response = array();
