@@ -24,7 +24,12 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div ng-init = "home = true" ng-include src="'header.php'"></div>
+    <div class="text-right">
+-        <button class="btn btn-dark" ng-click="logout()">Logout</button>
+-    </div>
+-    <div class="pt-3 row align-items-center justify-content-center">
+-        <h2>What would you like to do?</h2>
+-    </div>
     
     <div class = "pt-2 text-center">
         <a href="createaccountadmin.html" class="btn btn-dark" role="button">Create Account</a>
