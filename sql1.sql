@@ -50,7 +50,7 @@ CREATE TABLE courseTaken (
   courseName VARCHAR(50) NOT NULL,
   courseGrade VARCHAR(2) NOT NULL,
   PRIMARY KEY (courseTakenID),
-  FOREIGN KEY (FFK_hawkID) REFERENCES account(hawkID)
+  FOREIGN KEY (FFK_hawkID) REFERENCES tutorApp(FK_hawkID)
 );
 INSERT INTO courseTaken (FFK_hawkID, courseNum, courseName, courseGrade) VALUES ('jessday', 1020, 'Principles of Computing', 'B-');
 
@@ -115,17 +115,19 @@ CREATE TABLE takesCourse (
     takesCourseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     FK_hawkID VARCHAR(50) NOT NULL,
     FK_courseID INT UNSIGNED NOT NULL,
+    sessionsRemaining INT NOT NULL,
     PRIMARY KEY (takesCourseID),
     FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID),
     FOREIGN KEY (FK_courseID) REFERENCES course(courseID)
 );
-INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('kennyenokian',1);
-INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('johnsmith',1);
-INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('rachelbartlett',2);
-INSERT INTO takesCourse (FK_hawkID, FK_courseID) VALUES ('zachdotzler',3);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID, sessionsRemaining) VALUES ('kennyenokian',1, 6);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID, sessionsRemaining) VALUES ('johnsmith',1, 4);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID, sessionsRemaining) VALUES ('rachelbartlett',2, 5);
+INSERT INTO takesCourse (FK_hawkID, FK_courseID, sessionsRemaining) VALUES ('zachdotzler',3, 2);
 
 
 CREATE TABLE instructsCourse (
+  
     instructsCourseID INT UNSIGNED AUTO_INCREMENT NOT NULL,
     FK_hawkID VARCHAR(50) NOT NULL,
     FK_courseID INT UNSIGNED NOT NULL,
