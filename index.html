@@ -23,16 +23,24 @@
 
 <body>
 <div class="container" ng-controller="dataControl">
-    
-    <div ng-init = "home = true" ng-include src="'header.php'"></div>
-    
+    <!-- logout button -->
+    <div class="text-right">
+        <button class="btn btn-dark" ng-click="logout()">Logout</button>
+    </div>
+    <!-- sessions remaining widget -->
+    <div class="float-right" style="margin-top: 0.5rem">
+        <div class="card" style="width: 8rem">
+            <h6 class="card-header" style="text-align: center">Sessions remaining:</h6>
+            <p class="card-text" style="text-align: center" ng-change = "session in sessionsRemaining.takesCourse">{{session.sessionsRemaining}}</p>
+        </div>
+    </div>
+    <!--  title text  -->
     <div class="pt-3 row align-items-center justify-content-center">
--        <h2>What would you like to do?</h2>
--    </div>
-    
+        <h2>What would you like to do?</h2>
+    </div>
+    <!--  student button options  -->
     <div class = "pt-2 text-center">
-        <!--<a href="viewproblemsstudent.html" class="btn btn-dark" ng-click="problemredirect()" role="button">View Practice Problems</a>-->
-        <button class="btn btn-dark" ng-click="problemredirect()">View Practice Problems</button>
+        <a href="viewproblemsstudent.html" class="btn btn-dark" role="button">View Practice Problems</a>
         <a href="reservations.html" class="btn btn-dark" role="button">Make/Cancel a Reservation</a>
         <a href="ratesessions.html" class="btn btn-dark" role="button">Rate a Session</a>
         
