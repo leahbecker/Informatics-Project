@@ -36,7 +36,11 @@
             }
             );
         
-        
+             $http.get('sessionsRemaining.php')
+            .then(function(response) {
+                $scope.takesCourse = response.data.value;
+            }
+            );
         
         $scope.query = {};
         $scope.queryBy = "$";
