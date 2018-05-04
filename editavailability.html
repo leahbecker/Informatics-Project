@@ -24,15 +24,15 @@
 
 <body>
 <div class="container" ng-controller="dataControl">
-    
+    <!-- header with home and logout buttons -->
     <div  ng-include src="'header.php'"></div>
-    
+    <!-- title text -->
     <div class="pt-3 row align-items-center justify-content-center">
         <h2>Edit Availability</h2>
     </div>
     
     
-    
+    <!-- table with availability -->
     <table class="table table-striped">
         <thead>
           <tr>
@@ -42,6 +42,7 @@
           </tr>
         </thead>
                         <tbody>
+                            <!-- data being input to table -->
                            <tr>
                               <th scope=”row”>
                               <?php echo $count; ?>
@@ -54,6 +55,11 @@
                               </td>
                               <td>
                               <?php echo $row['endTime']; ?>
+                              </td>
+                               <td>
+                                <!-- edit and delete buttons for each row -->
+                                <button class="btn btn-dark" ng-click="editAvailability(weeklySlot)">Edit</button>
+                                <button class="btn btn-dark" ng-click="deleteAvailability(takesCourse.weekday, takesCourse.startTime, takesCourse.endTime)">Delete</button>
                               </td>
                            </tr>
                         </tbody>
