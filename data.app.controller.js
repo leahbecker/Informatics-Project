@@ -36,11 +36,16 @@
             }
             );
         
-             $http.get('sessionsRemaining.php')
+             $http.get('sessionsremaining.php')
             .then(function(response) {
-                $scope.takesCourse = response.data.value;
+                $scope.sessions = response.data.sessions;
             }
             );
+            
+            $http.get('isloggedin.php')
+            .then(function(response){
+                $scope.role = response.data.role;
+            });
         
         $scope.query = {};
         $scope.queryBy = "$";

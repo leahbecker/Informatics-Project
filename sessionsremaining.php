@@ -7,11 +7,13 @@ include_once('dbutils.php');
 // get a connection to the database
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 // $user = $_SESSION['username'];
-$tablename = "takesCourse";
+$tablename = "account";
+$hawkID = $_SESSION['username'];
 //*******change this to only get slots that do not have an assigned student
 //(WHERE FK_student = null)
-$query = "SELECT sessionsRemaining FROM $tablename;";
+$query = "SELECT sessionsRemaining FROM $tablename WHERE hawkID = '$hawkID';";
 $result = queryDB($query, $db);
+$sessions = nextTuple($result);
 $sessionsRemainingArray = array();
 $i = 0;
 // go through the results one by one
@@ -26,6 +28,7 @@ $response['status'] = 'success';
 //$response['value']['user'] = $_Session['username'];
 //$response2['status'] = 'success';
 $response['value']['takesCourse'] = $sessionsRemainingArray;
+$response['sessions'] = $sessions;
 //$response['value']['user'] = $user;
 header('Content-Type: application/json');
 echo(json_encode($response));

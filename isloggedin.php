@@ -18,6 +18,7 @@
     $response['loggedin'] = $isloggedin;
     $response['username'] = $username;
     $response['course'] = $_SESSION['course'];
+    $response['role'] = $_SESSION['role'];
     header('Content-Type: application/json');
     echo(json_encode($response));    
 ?>
