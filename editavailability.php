@@ -14,12 +14,12 @@ $query = "SELECT hawkID, weekday, startTime, endTime FROM $tablename;";
 
 $result = queryDB($query, $db);
 
-$weeklySlotArray = array();
+$editSlotsArray = array();
 $i = 0;
 
 // go through the results one by one
 while ($currSlot = nextTuple($result)) {
-    $weeklySlotArray[$i] = $currSlot;
+    $editSlotsArray[$i] = $currSlot;
     $i++;
 }
 
@@ -29,7 +29,7 @@ $response = array();
 $response['status'] = 'success';
 //$response['value']['user'] = $_Session['username'];
 //$response2['status'] = 'success';
-$response['value']['weeklySlot'] = $weeklySlotArray;
+$response['value']['weeklySlot'] = $editSlotsArray;
 //$response['value']['user'] = $user;
 header('Content-Type: application/json');
 echo(json_encode($response));
