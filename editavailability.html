@@ -24,7 +24,7 @@
 <body>
 <div class="container" ng-controller="dataControl">
     <!-- header with home and logout buttons -->
-    <div  ng-include src="'header.php'"></div>
+    <div ng-init="role = '{{role.role}}'" ng-include src="'header.php'"></div>
     <!-- title text -->
     <div class="pt-3 row align-items-center justify-content-center">
         <h2>Edit Availability</h2>
