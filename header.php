@@ -1,10 +1,11 @@
+
  <div class="row">
         
         <div class="col text-left">
              
             <!--<button class = "btn btn-dark align-right" ng-disabled="home" onClick = "history.back()">Back</button>-->
             <button class = "btn btn-dark align-right" ng-click ="goHome('<?php session_start(); $userRole = $_SESSION['role']; echo "$userRole";?>')"
-            ng-hide ="home">Home</button>
+            ng-hide ="home==true">Home</button>
         </div>
        <!-- sessions remaining widget -->
     <div ng-show ="role =='student'" class="float-right" style="margin-top: .25rem">
@@ -20,4 +21,4 @@
             echo "$firstName";
             ?>       </button>
         </div>
-</div>
+ </div>
