@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html ng-app="app">
@@ -44,18 +43,20 @@
                         <tbody>
                             <!-- data being input to table -->
                            <tr>
+                              <tr ng-repeat = "editSlots in weeklySlot.weeklySlot">
                               <th scope=”row”>
-                              <?php echo $count; ?>
+                              {{editSlots.hawkID}}
                               </th>
                               <td>
-                              <?php echo $row['weekday']; ?>
+                              {{editSlots.weekday}}  
                               </td>
                               <td>
-                              <?php echo $row['startTime']; ?>
+                              {{editSlots.startTime}}
                               </td>
                               <td>
-                              <?php echo $row['endTime']; ?>
+                              {{editSlots.endTime}}
                               </td>
+
                                <td>
                                 <!-- edit and delete buttons for each row -->
                                 <button class="btn btn-dark" ng-click="editAvailability(weeklySlot)">Edit</button>
