@@ -18,18 +18,19 @@ CREATE TABLE account (
     lastName VARCHAR(50) NOT NULL,
     hashedpass VARCHAR(255) NOT NULL,
     userRole VARCHAR(20),
+    sessionsRemaining INT DEFAULT NULL,
     PRIMARY KEY (hawkID)
 );
-INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('johnsmith', 'John', 'Smith', '$2a$12$gbkwiCA1rC3s0WAIaGaGq.7yGWV21k4KWSGRk4UQ6H5D19F5Vv4b.','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole,sessionsRemaining) VALUES ('johnsmith', 'John', 'Smith', '$2a$12$gbkwiCA1rC3s0WAIaGaGq.7yGWV21k4KWSGRk4UQ6H5D19F5Vv4b.','student',5);
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('leahbecker', 'Leah', 'Becker', '$2a$12$OGseqSeG63NyjgSFUDc3jOmg2TS5gRFmK1G4MbGXZRlDhppc5EbwG','tutor');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('jamescharles', 'James', 'Charles', '$2a$12$leIFOJRfZlj3CImnZvhZdO219sIjNYQHJceOZ29AysN9I4XMWxCXO','faculty');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('kennyenokian', 'Kenny', 'Enokian', '$2a$12$rLPFKgUP.LpsyTK4qXsHteloqN61A8BmJa8fjY0sDRtR2s8/B4kZC','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole,sessionsRemaining) VALUES ('kennyenokian', 'Kenny', 'Enokian', '$2a$12$rLPFKgUP.LpsyTK4qXsHteloqN61A8BmJa8fjY0sDRtR2s8/B4kZC','student',4);
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('lilyjohnson', 'Lily', 'Johnson', '$2a$12$FYVwpUAyfhwDlNHksQ391uh8GMoGEC15/alaii7ySsX55gu7vl4ZS','tutor');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('tedmoseby', 'Ted', 'Moseby', '$2a$12$/x4Ssj4EwtV9xdTVHuNImuiWPznq5fn1naQvhmAus/wF1c2KuquKq','faculty');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', '$2a$12$0PAOOGt2y/kq2HHCoTqhz.KE/d0vybUYpaWWphYQWLbbFrquc.7Xm','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole,sessionsRemaining) VALUES ('rachelbartlett', 'Rachel', 'Bartlett', '$2a$12$0PAOOGt2y/kq2HHCoTqhz.KE/d0vybUYpaWWphYQWLbbFrquc.7Xm','student',2);
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('ashleyhewitt', 'Ashley', 'Hewitt', '$2a$12$RNNUy077VNwpbcGMR.Qilefac/nvvYHoUf3aof9WblRfDkJgHScNS','faculty');
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('shelbyjoe', 'Shelby', 'Joe', '$2a$12$SJHpSGW2FS4K7Gad32pIfetvv1yxItYLWD2.a/iRRWZhcfmm7pVia','tutor');
-INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('zachdotzler', 'Zach', 'Dotzler', '$2a$12$sg/bAZc7BE7CPDX/ARZiHepq3O3xWBuIuV/i3yUXiWrVKB/FXelAy','student');
+INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole,sessionsRemaining) VALUES ('zachdotzler', 'Zach', 'Dotzler', '$2a$12$sg/bAZc7BE7CPDX/ARZiHepq3O3xWBuIuV/i3yUXiWrVKB/FXelAy','student',6);
 INSERT INTO account (hawkID, firstName, lastName, hashedpass, userRole) VALUES ('jessday', 'Jess', 'Day', '$2a$12$dDQk98TqS7OXkF8WsFe8Oe5ORYFw2.z0/Qe13AbXTubKuKqn5Hz.6','tutor');
 
 
