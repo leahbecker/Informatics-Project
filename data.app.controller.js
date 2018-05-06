@@ -101,14 +101,17 @@
                     }
                     else if(response.data.role == 'student'){
                         //alert('student');
+                       
                         $window.location.href = "index.html";
                     }
                     else if(response.data.role == 'tutor'){
                         //alert('tutor');
+                        
                         $window.location.href = "tutorhome.html";
                     }
                     else if(response.data.role == 'faculty'){
                         //alert('faculty');
+                        
                         $window.location.href = "facultyhome.html";
                     }
                     else {

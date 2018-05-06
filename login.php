@@ -73,8 +73,8 @@
         // $hashedpass includes the salt, and php's crypt function knows how to extract the salt from $hashedpass
         // $password is the text password the user entered in login.html
         
-		//if ($hashedpass != crypt($password, $hashedpass)) {
-        if($hashedpass != $password){
+		if ($hashedpass != crypt($password, $hashedpass)) {
+        //if($hashedpass != $password){
             // if password is incorrect
             
             $errorMessage .= " The password you enterered is incorrect. ";
@@ -99,6 +99,7 @@
 		$response['message'] = 'logged in';
         $response['role'] = $role;
         $response['admin'] = $admin;
+       
         //$response['name'] = $name;
         header('Content-Type: application/json');
         echo(json_encode($response));
