@@ -20,19 +20,39 @@
     
 	
     if ($isComplete) {
-        //$query = "SELECT accountID, hashedpass FROM account WHERE hawkID = '$title';";
-        $updateReservation = "UPDATE tutorSlot SET FK_student = '$student' WHERE slotID = $slotID;";
-        //upload the problem
-        queryDB($updateReservation, $db);
+        
+        $creditsQuery = "SELECT sessionsRemaining FROM account WHERE hawkID = '$student';";
+        $result = queryDB($creditsQuery, $db);
+        $creditsArray = nextTuple($result);
+        $credits = $creditsArray['sessionsRemaining'];
+        
+        if($credits>=1){
+            //add the student to the slot
+            $updateReservation = "UPDATE tutorSlot SET FK_student = '$student' WHERE slotID = $slotID;";
+            //upload the reservation
+            queryDB($updateReservation, $db);
+            
+            $newCredits = $credits -1;
+            $updateCredits = "UPDATE account SET sessionsRemaining = $newCredits WHERE hawkID = '$student';";
+            queryDB($updateCredits,$db);
         
         
-        // send a response back to angular
-        $response = array();
-        $response['status'] = 'success';
-        $response['student'] = $student;
-        $response['slotID'] = $slotID;
-        header('Content-Type: application/json');
-        echo(json_encode($response));    
+        
+            // send a response back to angular
+            $response = array();
+            $response['status'] = 'success';
+            $response['student'] = $student;
+            $response['slotID'] = $slotID;
+            header('Content-Type: application/json');
+            echo(json_encode($response));
+        }
+        else{
+            $response = array();
+            $response['status'] = 'error';
+            $response['message'] = 'Insufficient Credits' . $newCredits;
+            header('Content-Type: application/json');
+            echo(json_encode($response));
+        }
 } else {
     // there's been an error. We need to report it to the angular controller.
     

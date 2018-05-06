@@ -152,7 +152,7 @@ INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1210 Practice Proble
 
 CREATE TABLE tutorSlot (
   slotID INT UNSIGNED AUTO_INCREMENT NOT NULL,
-  FK_student VARCHAR(50),
+  FK_student VARCHAR(50) DEFAULT null,
   FK_tutor VARCHAR(50),
   FK_courseID INT UNSIGNED NOT NULL,
   datetime DATETIME NOT NULL,
@@ -169,3 +169,4 @@ INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null
 INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'leahbecker', 1, '2018-05-25 09:00:00');
 INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'lilyjohnson', 1, '2018-06-01 12:30:00');
 INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'leahbecker', 1, '2018-06-02 10:30:00');
+INSERT INTO tutorSlot (FK_student, FK_tutor, FK_courseID, datetime) VALUES (null, 'leahbecker', 1, '2018-05-07 01:30:00');

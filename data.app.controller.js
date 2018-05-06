@@ -166,9 +166,10 @@
         
         $scope.reserve = function(slot) {
         //var slotUpload = angular.copy(slot);
-          
+          if(confirm('Are you sure you want to reserve this slot? 1 session credit will be deducted from your account if you proceed.')){
           $http.post("reservations.php", slot)
             .then(function (response) {
+                
                if (response.status == 200) {
                     if (response.data.status == 'error') {
                         alert('error: ' + response.data.message);
@@ -181,11 +182,11 @@
                 alert('unexpected error');
                }
             });                        
-        };
+          }};
         
         $scope.cancel = function(slot) {
         //var slotUpload = angular.copy(slot);
-          
+          if(confirm('Are you sure you want to cancel? Session credits will only be refunded if cancelation is made 48+ hours in advance')){
           $http.post("cancelReservations.php", slot)
             .then(function (response) {
                if (response.status == 200) {
@@ -193,14 +194,14 @@
                         alert('error: ' + response.data.message);
                     }
                  else  {
-                    alert('Canceled');
+                    alert('Canceled ' + response.data.refundText);
                     location.reload();
                }
                } else{
                 alert('unexpected error');
                }
             });                        
-        };
+          }};
         
         
         // function to log the user out

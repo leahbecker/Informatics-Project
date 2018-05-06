@@ -6,7 +6,7 @@
     // get data from form
     $data = json_decode(file_get_contents('php://input'), true);
     //$data = (file_get_contents('php://input'), true);
-    //$student = $_SESSION['username'];
+    $student = $_SESSION['username'];
     $slotID = $data['slotID'];
     
     
@@ -25,12 +25,43 @@
         //upload the problem
         queryDB($cancelReservation, $db);
         
+        $creditsQuery = "SELECT sessionsRemaining FROM account WHERE hawkID = '$student';";
+        $result = queryDB($creditsQuery, $db);
+        $creditsArray = nextTuple($result);
+        $credits = $creditsArray['sessionsRemaining'];
+        
+        $nowQuery = "SELECT NOW() as now;";
+        $result = queryDB($nowQuery, $db);
+        $now = nextTuple($result)['now'];
+        
+        $reservedDateQuery = "SELECT datetime FROM tutorSlot WHERE slotID = $slotID;";
+        $result = queryDB($reservedDateQuery, $db);
+        $reservedDate = nextTuple($result)['datetime'];
+        
+        $diffQuery = "SELECT TIMESTAMPDIFF(HOUR, '$now', '$reservedDate') AS difference FROM tutorSlot;";
+        $result = queryDB($diffQuery, $db);
+        $difference = nextTuple($result)['difference'];
+        
+        $newCredits = $credits;
+        $refund = "You canceled with less than 48 hour notice, you will not be refunded the session credit used for this reservation";
+        if($difference >= 48){
+            $newCredits = $credits + 1;
+            $refund = "You have been refunded 1 session credit";
+        }
+        
+        $updateCredits = "UPDATE account SET sessionsRemaining = $newCredits WHERE hawkID = '$student';";
+        queryDB($updateCredits, $db);
+        
         
         // send a response back to angular
         $response = array();
         $response['status'] = 'success';
         //$response['student'] = $student;
         $response['slotID'] = $slotID;
+        $response['now'] = $now;
+        $response['difference'] = $difference;
+        $response['reservedDate'] = $reservedDate;
+        $response['refundText'] = $refund;
         header('Content-Type: application/json');
         echo(json_encode($response));    
 } else {
