@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html ng-app="app">
@@ -42,21 +41,23 @@
           </tr>
         </thead>
                         <tbody>
-                           <tr>
+                           <tr ng-repeat = "editAcct in account.account">
                               <th scope=”row”>
-                              <?php echo $count; ?>
+                              {{editAcct.hawkID}}
                               </th>
                               <td>
-                              <?php echo $row[‘hawkID’]; ?>
+                              {{editAcct.firstName}}
                               </td>
                               <td>
-                              <?php echo $row[‘firstName’]; ?>
+                              {{editAcct.lastName}}
                               </td>
                               <td>
-                              <?php echo $row[‘lastName’]; ?>
+                                <button class="btn btn-dark" ng-click="editAccount(account)">Edit</button>
+                                <button class="btn btn-dark" ng-click="deleteAccount(account.hawkID, account.firstName, account.lastName, account.hashedpass)">Delete</button>
                               </td>
                            </tr>
                         </tbody>
+                        
     </table>
 
                   
