@@ -109,9 +109,9 @@ CREATE TABLE weeklySlot (
     FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID)
 );
 
-INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('leahbecker', 'Monday', '9:00', '10:00');
-INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('lilyjohnson', 'Tuesday', '12:00', '1:00');
-INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('shelbyjoe', 'Thursday', '3:00', '4:00');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('leahbecker', 'Monday', '9:00', '9:20');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('lilyjohnson', 'Tuesday', '12:00', '12:20');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('shelbyjoe', 'Thursday', '3:00', '3:20');
 
 
 CREATE TABLE takesCourse (
