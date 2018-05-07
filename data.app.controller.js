@@ -38,6 +38,11 @@
             }
             );
             
+            $http.get('editdeleteaccount.php')
+            .then(function(response) {
+                $scope.editAccount = response.data.value;
+            }
+            );
             
             $http.get('tutorapp.php')
             .then(function(response) {
