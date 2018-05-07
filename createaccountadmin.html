@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html ng-app="app">
@@ -25,20 +24,18 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div class="row">
-        <div class="col text-left">
-            <a type="button" href="adminhome.html" class="btn btn-dark align-left" >Home</a>
-        </div>
-        <div class="col text-right">
-            <button class="btn btn-dark align-right" ng-click="logout()">Logout</button>
-        </div>
-    </div>
+     <div ng-init="role = '{{role.role}}'" ng-include src="'header.php'"></div>
         <div class="pt-3 row align-items-center justify-content-center">
         <h2>Create an Account</h2>
     </div>
     <form name="accountForm" novalidate>
         <div class="form-group">
             <div class="col-xs-4">
+                
+                
+                
+                
+                <!--
                 <input type="text" class="form-control" placeholder="hawkID" ng-model="account.hawkID" ng-minlength="2" id="hawkID" required/>
             </div>
             <div class = "col-xs-4">
@@ -47,21 +44,43 @@
             <div class = "col-xs-4">
                 <input type="text" class="form-control" placeholder="last name" ng-model="account.lastName" ng-minlength="2" id="lastName" required/>
             </div>
+            
+        -->
+            
+            
+            
+            
+            
+            <div class="form-group" ng-class="{ 'text-danger': accountForm.hawkID.$invalid && accountForm.hawkID.$touched, 'text-success': !accountForm.hawkID.$invalid && accountForm.hawkID.$touched}">
+                    <label class="form-control-label" for="hawkID">hawkID: </label>
+                    <input type="text" class="form-control" ng-class= "{ 'is-invalid': accountForm.hawkID.$invalid && accountForm.hawkID.$touched, 'is-valid': !accountForm.hawkID.$invalid && accountForm.hawkID.$touched}" name="hawkID" ng-model="account.hawkID" ng-minlength="2" required/>
+                    <p ng-show="accountForm.hawkID.$invalid && accountForm.hawkID.$touched" >The hawkID must be at least two characters long</p>
+                </div>
+            
+            <div class="form-group" ng-class="{ 'text-danger': accountForm.firstName.$invalid && accountForm.firstName.$touched, 'text-success': !accountForm.firstName.$invalid && accountForm.firstName.$touched}">
+                    <label class="form-control-label" for="firstName">first name: </label>
+                    <input type="text" class="form-control" ng-class= "{ 'is-invalid': accountForm.firstName.$invalid && accountForm.firstName.$touched, 'is-valid': !accountForm.firstName.$invalid && accountForm.firstName.$touched}" name="firstName" ng-model="account.firstName" ng-minlength="2" required/>
+                    <p ng-show="accountForm.firstName.$invalid && accountForm.firstName.$touched" >The first name must be at least two characters long</p>
+                </div>
+            
+            <div class="form-group" ng-class="{ 'text-danger': accountForm.lastName.$invalid && accountForm.lastName.$touched, 'text-success': !accountForm.lastName.$invalid && accountForm.lastName.$touched}">
+                    <label class="form-control-label" for="lastName">last name: </label>
+                    <input type="text" class="form-control" ng-class= "{ 'is-invalid': accountForm.lastName.$invalid && accountForm.lastName.$touched, 'is-valid': !accountForm.lastName.$invalid && accountForm.lastName.$touched}" name="lastName" ng-model="account.lastName" ng-minlength="2" required/>
+                    <p ng-show="accountForm.lastName.$invalid && accountForm.lastName.$touched" >The last name must be at least two characters long</p>
+                </div>
+            
+            <div class="form-group" ng-class="{ 'text-danger': accountForm.password.$invalid && accountForm.password.$touched, 'text-success': !accountForm.password.$invalid && accountForm.password.$touched}">
+                    <label class="form-control-label" for="password">password: </label>
+                    <input type="text" class="form-control" ng-class= "{ 'is-invalid': accountForm.password.$invalid && accountForm.password.$touched, 'is-valid': !accountForm.password.$invalid && accountForm.password.$touched}" name="password" ng-model="account.password" ng-minlength="6" required/>
+                    <p ng-show="accountForm.password.$invalid && accountForm.password.$touched" >The password must be at least six characters long</p>
+                </div>   
+            
         </div>
-    </form>
+    
     <div class = "pt-2 text-center">
     
-        <button class="btn btn-warning btn-lg" ng-click="createaccount(account)">Create Account</button>
-    
-    
-    <div ng-repeat="acct in data.account | filter:query">
-        <div>
-            <h3>hawkID:</h3>
-            {{acct.hawkID}}
-            <h3>name:</h3>
-            {{acct.firstName acct.lastName}}
-        </div>
-    </div>
+        <button class="btn btn-warning btn-lg" ng-click="createaccount(acctDetails)" ng-disabled="accountForm.$invalid">Create Account</button>
+     </form> 
 </div>
     
     
