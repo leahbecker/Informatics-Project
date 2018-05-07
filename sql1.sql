@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS tutorSlot;
 DROP TABLE IF EXISTS instructsCourse;
+DROP TABLE IF EXISTS answersProblem;
 DROP TABLE IF EXISTS problem;
 DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS takesCourse;

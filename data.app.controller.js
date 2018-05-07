@@ -38,12 +38,7 @@
             }
             );
             
-            $http.get('editdeleteaccount.php')
-            .then(function(response) {
-                $scope.editAccount = response.data.value;
-            }
-            );
-        
+            
             $http.get('tutorapp.php')
             .then(function(response) {
                 $scope.tutorApp = response.data.value;
@@ -65,28 +60,28 @@
         $scope.queryBy = "$";
         
         // function to send new account information to web api to add it to the database
--        $scope.createaccount = function(acctDetails) {
--          var acctUpload = angular.copy(acctDetails);
--          
--          $http.post("createaccount.php", acctUpload)
--            .then(function (response) {
--               if (response.status == 200) {
--                    if (response.data.status == 'error') {
--                        alert('error: ' + response.data.message);
--                    } else {
--                        // successful
--                       alert('Account successfully added.');
--                    }
--               } else {
--                    alert('unexpected error');
--               }
--            });                        
--        };
--        
--        
--        
--        /*
--        
+       $scope.createaccount = function(acctDetails) {
+          var acctUpload = angular.copy(acctDetails);
+          
+          $http.post("createaccount.php", acctUpload)
+            .then(function (response) {
+               if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert('error: ' + response.data.message);
+                    } else {
+                        // successful
+                       alert('Account successfully added.');
+                    }
+               } else {
+                    alert('unexpected error');
+               }
+            });                        
+        };
+        
+        
+        
+        /*
+        
          // function to send new account information to web api to add it to the database
          $scope.newAccount = function(accountDetails) {
            var accountupload = angular.copy(accountDetails);

@@ -21,7 +21,7 @@ $querySlotsTakenByUser = "SELECT slotID, FK_student, FK_tutor, courseName.course
 WHERE FK_student = '$user'
 AND courseName.courseNum =
 (SELECT course.FK_courseNum FROM course WHERE course.courseID = tutorSlot.FK_courseID)
-AND tutorSlot.dateTime >= NOW()date;";
+AND tutorSlot.dateTime >= NOW();";
 
 $result = queryDB($queryAvailableSlots, $db);
 $resultT = queryDB($querySlotsTakenByUser, $db);
