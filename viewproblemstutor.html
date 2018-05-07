@@ -2,7 +2,7 @@
 
 <html ng-app="app">
 <head>
-    <title>Tutor - View Problems</title>
+    <title>Tutor- Practice Problems</title>
 
     <!-- These are the links to bootstrap code -->
     <!-- we got the links from http://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
@@ -24,19 +24,43 @@
 <body>
 <div class="container" ng-controller="dataControl">
     
-    <div ng-init="role = '{{role.role}}'" ng-include src="'header.php'"></div>
+   <div ng-init="role = '{{role.role}}'" ng-include src="'header.php'"></div>
+    
     
     <div class="pt-3 row align-items-center justify-content-center">
-        <h2>View Problems</h2>
+        <h2>Practice Problems</h2>
     </div>
-    
-    <div class = "pt-2 text-center">
-        <a href="viewproblems1020tutor.html" class="btn btn-dark" role="button">Problems for CS:1020</a>
-        <a href="viewproblems1110tutor.html" class="btn btn-dark" role="button">Problems for CS:1110</a>
-        <a href="viewproblems1210tutor.html" class="btn btn-dark" role="button">Problems for CS:1210</a>
-
-        
+<!--
+    <div ng-repeat="prob in data.problem1020 | filter:query">
+        <div>
+            <h3>title:</h3>
+            {{prob.title}}
+            <h3>text:</h3>
+            {{prob.text}}
+        </div>
+-->
+<div class = "pt-3" ng-repeat="prob in data.problem">
+        <div class="card bg-light" >
+            <div class="card-header bg-dark text-warning">
+                  {{prob.title}}
+            </div>
+            <div class="card-body">
+               <!--<h5 class="card-title">Special title treatment</h5>-->
+               <p class="card-text">{{prob.text}}</p>
+               <p  class = "card-text">{{prob.answerText}}</p>
+              <div style="text-align:center">
+               <button class="btn btn-primary" ng-init= "answer=false" ng-show="answer==false" ng-click="answer=true">Answer</button>
+               <div class = "form-groups" ng-show = "answer">
+                  <textarea class=" pt-2 form-control" rows="4"  ng-model="prob.answerTextEntry" ng-minlength="1" ></textarea>
+                  
+                  <button class="btn btn-primary" ng-Click = "answerFunction(prob)" ng-hide="tutor == true">Answer</button>
+                 
+               </div>
+               </div>
+            </div>
+         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS tutorSlot;
+DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS problem;
 DROP TABLE IF EXISTS instructsCourse;
 DROP TABLE IF EXISTS takesCourse;
@@ -95,21 +96,21 @@ CREATE TABLE tutors (
 
 INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('leahbecker', 1);
 INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('lilyjohnson', 1);
-INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('shelbyjoe', 1);
+INSERT INTO tutors (FK_hawkID, FK_courseID) VALUES ('shelbyjoe', 2);
 
 
 CREATE TABLE weeklySlot (
     hawkID VARCHAR(50) NOT NULL,
     weekday VARCHAR(50) NOT NULL,
-    startTime VARCHAR(50) NOT NULL,
-    endTime VARCHAR(50) NOT NULL,
+    startTime TIME NOT NULL,
+    endTime TIME NOT NULL,
     PRIMARY KEY (hawkID),
     FOREIGN KEY (hawkID) REFERENCES tutors(FK_hawkID)
 );
 
-INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('leahbecker', 'Monday', '9:00 AM', '10:00 AM');
-INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('lilyjohnson', 'Tuesday', '12:00 PM', '1:00 PM');
-INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('shelbyjoe', 'Thursday', '3:00 PM', '4:00 PM');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('leahbecker', 'Monday', '9:00', '10:00');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('lilyjohnson', 'Tuesday', '12:00', '1:00');
+INSERT INTO weeklySlot (hawkID, weekday, startTime, endTime) VALUES ('shelbyjoe', 'Thursday', '3:00', '4:00');
 
 
 CREATE TABLE takesCourse (
@@ -147,8 +148,19 @@ CREATE TABLE problem (
   FOREIGN KEY (FK_courseNum) REFERENCES courseName(courseNum)
 );
 INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1020 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1020',1020);
-INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1110 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1110',1020);
-INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1210 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1210',1020);
+INSERT INTO problem (title, text, FK_courseNum) VALUES ('Exam Preparedness', 'Which concepts do you feel you need improvement in before Exam 1? Which are you most confident in? ',1020);
+INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1110 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1110',1110);
+INSERT INTO problem (title, text, FK_courseNum) VALUES ('CS:1210 Practice Problem 1', 'This is the problem text. This is the practice problem for CS:1210',1210);
+
+CREATE TABLE answersProblem(
+  answersProblemID INT UNSIGNED AUTO_INCREMENT NOT NULL,
+  FK_problemID INT UNSIGNED NOT NULL,
+  FK_hawkID VARCHAR(50),
+  answerText VARCHAR(9999),
+  PRIMARY KEY (answersProblemID),
+  FOREIGN KEY (FK_problemID) REFERENCES problem(problemID),
+  FOREIGN KEY (FK_hawkID) REFERENCES account(hawkID)
+);
 
 CREATE TABLE tutorSlot (
   slotID INT UNSIGNED AUTO_INCREMENT NOT NULL,

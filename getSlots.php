@@ -14,12 +14,14 @@ $tablename = "tutorSlot";
 $queryAvailableSlots = "SELECT slotID, FK_student, FK_tutor, courseName.courseName, datetime FROM $tablename,courseName
 WHERE FK_student is null
 AND courseName.courseNum =
-(SELECT FK_courseNum FROM course WHERE courseID = FK_courseID);";
+(SELECT FK_courseNum FROM course WHERE courseID = FK_courseID)
+AND tutorSlot.dateTime >= NOW();";
 
 $querySlotsTakenByUser = "SELECT slotID, FK_student, FK_tutor, courseName.courseName, datetime FROM $tablename,courseName
 WHERE FK_student = '$user'
 AND courseName.courseNum =
-(SELECT course.FK_courseNum FROM course WHERE course.courseID = tutorSlot.FK_courseID)";
+(SELECT course.FK_courseNum FROM course WHERE course.courseID = tutorSlot.FK_courseID)
+AND tutorSlot.dateTime >= NOW()date;";
 
 $result = queryDB($queryAvailableSlots, $db);
 $resultT = queryDB($querySlotsTakenByUser, $db);
@@ -55,36 +57,5 @@ $response['value']['slotsTakenByUser'] = $slotsTakenByUser;
 
 header('Content-Type: application/json');
 echo(json_encode($response));
-//echo(json_encode($response2));
-/* 
-    include_once('config.php');
-    include_once('dbutils.php');
-    
-    //connect
-    $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
-    
-    
-    $tablename = "movies";
-    //query
-    $query = "SELECT * FROM $tablename;";
-    
-    $result = queryDB($query, $db);
-    
-    //results to array
-    $moviesArray = array();
-    $i = 0;
-    
-    while($currMovie = nextTuple($result)){
-        $moviesArray[$i] = $currMovie;
-        $i++;
-    }
-    
-    //JSON object
-    $response = array();
-    $response['status'] = 'success';
-    
-    $response['value']['movies'] = $moviesArray;
-    header('Content-Type: application/json');
-    echo(json_encode($response));
-*/
+
 ?>

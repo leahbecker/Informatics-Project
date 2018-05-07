@@ -37,9 +37,12 @@
         $query3 = "SELECT DISTINCT course.FK_courseNum FROM course,takesCourse
         WHERE courseID=(SELECT FK_courseID FROM takesCourse WHERE FK_hawkID = '$username');";
         
+        $query4 = "SELECT DISTINCT course.FK_courseNum FROM course,tutors WHERE courseID = (SELECT FK_courseID FROM tutors WHERE FK_hawkID = '$username');";
+        
         $result = queryDB($query, $db);
         $result2 = queryDB($query2, $db);
         $result3 = queryDB($query3, $db);
+        $result4 = queryDB($query4, $db);
         
         
         if (nTuples($result) == 0) {
@@ -64,9 +67,13 @@
         //$admin = '1';
         $row2 = nextTuple($result2);
         $admin = $row2['isAdmin'];
-        
-        $row3 = nextTuple($result3);
-        $courseTaken = $row3['FK_courseNum'];
+        if($role == 'student'){
+            $row3 = nextTuple($result3);
+            $courseTaken = $row3['FK_courseNum'];
+        }else if($role == 'tutor'){
+            $row3= nextTuple($result4);
+            $courseTaken = $row3['FK_courseNum'];
+        }
         
 		// compare entered password to the password on the database
         // $hashedpass is the version of hashed password stored in the database for $username
