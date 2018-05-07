@@ -4,6 +4,8 @@
     var myApp = angular.module("app");
     
     myApp.controller("dataControl", function($scope, $http, $window) {
+    
+        //$scope.time = [];
         
         $http.get('getproblems.php')
             .then(function(response) {
@@ -11,6 +13,13 @@
             }
             );
             
+        $http.get('getStudentAnswers.php')
+            .then(function(response) {
+                $scope.studentAnswers = response.data.value;
+            }
+            );
+            
+        
         $http.get('getSlots.php')
             .then(function(response) {
                 $scope.slots = response.data.value;
@@ -50,31 +59,37 @@
         $scope.query = {};
         $scope.queryBy = "$";
         
-        
-        
-        
         // function to send new account information to web api to add it to the database
-        $scope.createaccount = function(acctDetails) {
-          var acctUpload = angular.copy(acctDetails);
-          
-          $http.post("createaccount.php", acctUpload)
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.status == 'error') {
-                        alert('error: ' + response.data.message);
-                    } else {
-                        // successful
-                       alert('Account successfully added.');
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });                        
-        };
-        
-        
-        
-        /*
+-        $scope.createaccount = function(acctDetails) {
+-          var acctUpload = angular.copy(acctDetails);
+-          
+-          $http.post("createaccount.php", acctUpload)
+-            .then(function (response) {
+-               if (response.status == 200) {
+-                    if (response.data.status == 'error') {
+-                        alert('error: ' + response.data.message);
+-                    } else {
+-                        // successful
+-                       alert('Account successfully added.');
+-                    }
+-               } else {
+-                    alert('unexpected error');
+-               }
+-            });                        
+-        };
+-        
+-        
+-        
+-        /*
+-        
+         // function to send new account information to web api to add it to the database
+         $scope.newAccount = function(accountDetails) {
+           var accountupload = angular.copy(accountDetails);
+@@ -95,9 +78,6 @@
+                }
+             });                        
+         };
+-        */
         
         // function to send new account information to web api to add it to the database
         $scope.newAccount = function(accountDetails) {
@@ -95,9 +110,6 @@
                }
             });                        
         };
-        */
-        
-        
         
         $scope.uploadproblem = function(accountDetails) {
           var accountupload = angular.copy(accountDetails);
@@ -231,7 +243,51 @@
                }
             });                        
           }};
+          
+          $scope.answerFunction = function(prob) {
+            $http.post("answerProblem.php",prob)
+            .then(function(response){
+                if(response.status == 200){
+                    if(response.data.status == 'error'){
+                        alert('error: ' + response.data.message);
+                    }
+                else {
+                    alert('Answer Submitted!');
+                    location.reload();
+                }
+                }else{
+                    alert('unexpected error');
+                }
+            });
+          };
         
+        $scope.editavailability = function(time) {
+            var startHours = time.start.getHours(); var startMins = time.start.getMinutes(); var endHours = time.end.getHours(); var endMins=time.end.getMinutes();
+            function makeTwoDigit(num){
+                num=num.toString();
+                if(num.length==1){
+                    num = "0" + num;
+                }
+                return num;
+            }
+            
+            time.start = makeTwoDigit(startHours) + ':' + makeTwoDigit(startMins);
+            time.end = makeTwoDigit(endHours)+':'+ makeTwoDigit(endMins);
+            $http.post("editavailability.php",time)
+            .then(function(response) {
+                if(response.status ==200){
+                    if(response.data.status =='error'){
+                        alert('error:.'+response.data.message);
+                    }else{
+                        alert(response.data.r);
+                        location.reload();
+                        //successful
+                    }
+                }else{
+                    alert('unexpected error');
+                }
+            });
+        };
         
         // function to log the user out
         $scope.logout = function() {
@@ -270,30 +326,7 @@
         
 
         
-         $scope.problemredirect = function() {
-          $http.post("isloggedin.php")
-            .then(function (response) {
-               if (response.status == 200) {
-                    if (response.data.course == 1020) {
-                        $window.location.href = "viewproblems1020student.html";
-                    }
-                    else if (response.data.course ==1110) {
-                        $window.location.href = "viewproblems1110student.html";
-                    }
-                    else if (response.data.course == 1210) {
-                        $window.location.href = "viewproblems1210student.html";
-                    }
-                    else {
-                        alert('Not enrolled in a course');
-                        // successful
-                        // set $scope.isloggedin based on whether the user is logged in or not
-                        //$scope.isloggedin = response.data.loggedin;
-                    }
-               } else {
-                    alert('unexpected error');
-               }
-            });                        
-        };
+         
         
 
     });
